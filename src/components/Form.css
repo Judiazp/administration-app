@@ -1,0 +1,59 @@
+.operation {
+    margin: auto;
+    color: #fff;
+    height: 100vh;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 30px;
+    border-radius: 7px;
+    background-color: rgb(34,34,34);
+    border: 2px solid rgb(41,41,41);
+    margin: 0px;
+}
+
+.input {
+    border: 0.5px solid gray;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    background-color: rgb(33,38,45);
+    transition: 350ms;
+    color: rgba(255, 255, 255, 0.425);
+    margin-bottom: 10px;
+}
+
+.input:hover {
+    transform: scale(1.025);
+}
+
+.description {
+    padding: 10px 10px 40px 10px;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 10px;
+    border: 0.5px solid gray;
+    background-color: rgb(33,38,45);
+    transition: 200ms;
+    color: rgba(255, 255, 255, 0.425);
+}
+
+.description:hover {
+    transform: scale(1.025);
+}
+
+.button {
+    padding: 10px;
+    background-color: #348637;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+}
+
+.button:hover {
+    background-color: #2ea043;
+}

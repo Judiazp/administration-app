@@ -1,0 +1,15 @@
+.transaction {
+    border: 1px solid #222222;
+    border-radius: 7px;
+    display: flex;
+    justify-content: space-around;
+    transition: 450ms;
+    width: 400px;
+    margin-left: 15px;
+}
+
+.transaction:hover {
+    background-color: #21262D;
+    transform: translate3d(10px, 0, 0);
+    border-color: white;
+}
