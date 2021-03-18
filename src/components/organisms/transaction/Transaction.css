@@ -9,7 +9,6 @@
 }
 
 .transaction:hover {
-    background-color: #21262D;
     transform: translate3d(10px, 0, 0);
     border-color: white;
 }

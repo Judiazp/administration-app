@@ -21,11 +21,27 @@
     margin: 0px 20px 0px 20px ;
     margin-bottom: 20px;
     padding: 10px;
-    
+
 }
 
 .filtros:hover {
     background-color: #2ea043;
+}
+
+.filtroEgr{
+    padding: 5px;
+    background-color: rgb(229,61,47,0.5);
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    margin: 0px 20px 0px 20px ;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.filtroEgr:hover {
+    background-color: rgb(229,61,47);
 }
 
 .title {
