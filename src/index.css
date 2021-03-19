@@ -2,13 +2,14 @@ body {
   background-color: rgb(10,10,10);
   margin: 0px;
   font-family: 'Josefin Sans', sans-serif;
+  /* overflow-y: hidden; */
 }
 
 .header {
   background-color: #2A2F32;
   color: #fff;
   display: flex;
-  align-items: center; 
+  align-items: center;
   height: 65px;
   border-bottom: 5px solid #222222;
 }

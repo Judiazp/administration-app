@@ -12,7 +12,9 @@ const TransactionHistory = (props) =>  {
                 <button className='filtroEgr'>Egresos</button>
                 <button className='filtros'>Todos</button>
             </article>
-            { props.transactions.map(transaction => <Transaction trans = {transaction} /> ) }
+            { props.transactions.map(transaction => <Transaction
+            trans = { transaction }
+            deleteRecord = { props.deleteRecord }/>)}
         </div>
     )
 }

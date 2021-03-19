@@ -3,8 +3,7 @@ import './Transaction.css';
 
 const Transaction = (props) => {
 
-    const { trans } = props
-
+    const { trans, deleteRecord } = props;
     let style;
 
     if (trans.operation === 'Ingreso'){
@@ -17,11 +16,18 @@ const Transaction = (props) => {
         }
     }
 
+    const onClick = () => {
+        deleteRecord(trans.id);
+    }
+
     return (
-        <article className="transaction" style= { style }>
+        <article className="transaction" style= { style } >
             <p>{ trans.date }</p>
             <p name = "description"> { trans.description } </p>
             <p name = "monto"> { trans.amount } </p>
+            <button className = 'btn' onClick = { onClick }>
+                x
+            </button>
         </article>
     )
 }

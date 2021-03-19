@@ -8,7 +8,30 @@
     margin-left: 15px;
 }
 
+.transaction p {
+    width: 100px;
+    text-align: center;
+}
+
 .transaction:hover {
     transform: translate3d(10px, 0, 0);
     border-color: white;
+}
+
+.btn {
+    outline: none;
+    background-color: transparent;
+    border: none;
+    font-size: large;
+    color: #fff;
+    height: 30px;
+    margin-top: 9.5px;
+    transition: 400ms;
+    padding: 5px;
+}
+
+.btn:hover {
+    text-decoration: underline;
+    display: block;
+    transform: rotate3d(1, 2.0, 3.0, 360deg);
 }

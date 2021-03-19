@@ -5,20 +5,20 @@ const Form = (props) => {
 
     const { addRecord } = props;
 
-    const [datos, setDatos] = useState({
+    const [data, setDatos] = useState({
         operation: '',
         amount: '',
-        description: ''
+        description: '',
     })
 
     const onSubmit = event => {
         event.preventDefault();
-         addRecord(datos.operation, datos.amount, datos.description);
+         addRecord(data.operation, data.amount, data.description);
     }
 
     const onChange = event => {
         setDatos({
-            ...datos,
+            ...data,
             [event.target.name] : event.target.value
         })
     }
