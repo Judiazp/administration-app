@@ -24,9 +24,9 @@ const Login = () =>  {
                     </button>
                     <p className = "signup">
                         ¿No tienes cuenta?
-                        <a href="#" onClick = { show } >
+                        <span onClick = { show } >
                             Registrate aquí
-                        </a>
+                        </span>
                     </p>
                 </form>
                 <form className = "signupForm">
@@ -39,9 +39,9 @@ const Login = () =>  {
                     </button>
                     <p className = "signup">
                         ¿Ya tienes cuenta?
-                        <a href="#" onClick = { show } >
+                        <span onClick = { show } >
                             Inicia sesión aquí
-                        </a>
+                        </span>
                     </p>
                 </form>
             </div>

@@ -64,21 +64,12 @@ const FinanceBoard = () => {
         })
     }
 
-    const updateRecord = (description, amount) => {
-
-        swal("Write something here:", {
-            content: "input"
-          })
-          .then((value) => {
-            const updateRecords = records.transactions.map(trans => {
-                trans.amount = amount;
-                trans.description = description;
-            })
-            console.log(updateRecords)
-            setRecords({ transactions: updateRecords})
-            swal( `Se cambio el valor a `, value);
-
-          });
+    const updateRecord = (id) => {
+        records.transactions.map(trans => {
+            if(trans.id === id) {
+                trans.amount = data
+            }
+        })
     }
 
     return (

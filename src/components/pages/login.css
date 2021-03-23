@@ -58,20 +58,18 @@ h2 {
     text-align: center;
 }
 
-.signup a {
+.signup span {
     color: #fff;
     font-style: italic;
     text-decoration: none;
     margin-left: 10px;
 }
 
-.signup a:hover {
+.signup span:hover {
     text-decoration: underline;
 }
 
 .signupForm {
-    /* display: flex;
-    flex-direction: column; */
     display: none;
 }
 
