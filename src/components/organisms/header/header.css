@@ -1,0 +1,24 @@
+.header {
+    background-color: #2A2F32;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    border-bottom: 5px solid #222222;
+}
+
+.titlePages {
+    display: flex;
+    align-items: center;
+}
+
+.titlePages img {
+    margin-left: 40px;
+    height: 50px;
+}
+
+.titlePages h1 {
+    font-weight: 400;
+    margin-left: 20px;
+}
