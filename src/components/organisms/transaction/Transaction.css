@@ -11,6 +11,11 @@
 .transaction p {
     width: 100px;
     text-align: center;
+    cursor: pointer;
+}
+
+.edit:hover{
+    text-decoration: underline;
 }
 
 .transaction:hover {

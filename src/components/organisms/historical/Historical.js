@@ -14,7 +14,8 @@ const TransactionHistory = (props) =>  {
             </article>
             { props.transactions.map(transaction => <Transaction
             trans = { transaction }
-            deleteRecord = { props.deleteRecord }/>)}
+            deleteRecord = { props.deleteRecord }
+            updateRecord = { props.updateRecord }/> )}
         </div>
     )
 }

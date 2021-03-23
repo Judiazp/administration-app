@@ -4,22 +4,3 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   /* overflow-y: hidden; */
 }
-
-.header {
-  background-color: #2A2F32;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  height: 65px;
-  border-bottom: 5px solid #222222;
-}
-
-.header img {
-  margin-left: 40px;
-  height: 50px;
-}
-
-.header h1 {
-  font-weight: 400;
-  margin-left: 20px;
-}

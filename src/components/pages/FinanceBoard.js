@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Form from '../organisms/form/Form';
 import Historical from '../organisms/historical/Historical';
 import swal from 'sweetalert';
+import Header from '../organisms/header/header'
+import './financeBoard.css'
 
 const FinanceBoard = () => {
 
@@ -9,7 +11,7 @@ const FinanceBoard = () => {
         transactions: [
             {
                 date: '28/02/2021',
-                operation: 'Ingreso',
+                operation: 'Egreso',
                 amount: '2000',
                 description: 'Netflix',
                 id: 0,
@@ -62,13 +64,33 @@ const FinanceBoard = () => {
         })
     }
 
+    const updateRecord = (description, amount) => {
+
+        swal("Write something here:", {
+            content: "input"
+          })
+          .then((value) => {
+            const updateRecords = records.transactions.map(trans => {
+                trans.amount = amount;
+                trans.description = description;
+            })
+            console.log(updateRecords)
+            setRecords({ transactions: updateRecords})
+            swal( `Se cambio el valor a `, value);
+
+          });
+    }
+
     return (
         <>
-            <Form addRecord = { addRecord } />
-            <Historical
-            transactions = {records.transactions}
-            deleteRecord = { deleteRecord }
-            />
+            <Header />
+            <section className = "bodyPages">
+                <Form addRecord = { addRecord } />
+                <Historical
+                transactions = {records.transactions}
+                deleteRecord = { deleteRecord }
+                updateRecord = { updateRecord } />
+            </section>
         </>
     )
 }
