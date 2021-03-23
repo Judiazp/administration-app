@@ -40,3 +40,12 @@
     display: block;
     transform: rotate3d(1, 2.0, 3.0, 360deg);
 }
+
+.formEdit {
+    text-align: center;
+    display: none;
+}
+
+.formEditOpen {
+    display: block;
+}

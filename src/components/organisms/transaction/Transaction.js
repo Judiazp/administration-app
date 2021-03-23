@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Transaction.css';
 
 const Transaction = (props) => {
 
     const { trans, deleteRecord, updateRecord } = props;
     let style;
+    const [editData, setEditData] = useState({
+        trans: {
+            operation: '',
+            amount: ''
+        }
+    })
 
     if (trans.operation === 'Ingreso'){
         style = {
@@ -20,23 +26,36 @@ const Transaction = (props) => {
         deleteRecord(trans.id);
     }
 
-    const update = () => {
-        updateRecord(trans.id, trans.amount, trans.description)
+    const formDisplay = () => {
+        const inptEdit = document.querySelector('.formEdit');
+        inptEdit.classList.toggle('formEditOpen');
+    }
+
+    const update = (event) => {
+        event.preventDefault()
+        const data = event.target.name;
+        console.log(data)
+        updateRecord(trans.id)
     }
 
     return (
-        <article className="transaction" style= { style } >
-            <p>{ trans.date }</p>
-            <p name = "description" title = "Editar" className = "edit" onClick = { update }>
-                { trans.description }
-            </p>
-            <p name = "monto" title = "Editar" className = "edit" onClick = { update }>
-                { trans.amount }
-            </p>
-            <button className = 'btn' title = "Eliminar" onClick = { onClick }>
-                x
-            </button>
-        </article>
+        <div >
+            <article className="transaction" style= { style }>
+                <p>{ trans.date }</p>
+                <p name = "description" title = "Editar" className = "edit" onClick = { formDisplay }>
+                    { trans.description }
+                </p>
+                <p name = "monto" title = "Editar" className = "edit" onClick = { formDisplay }>
+                    { trans.amount }
+                </p>
+                <button className = 'btn' title = "Eliminar" onClick = { onClick }>
+                    x
+                </button>
+            </article>
+            <form className = "formEdit" onSubmit = { update } >
+                <input className = "input" type = "text" placeholder = "Editar" onChange = "" />
+            </form>
+        </div>
     )
 }
 
