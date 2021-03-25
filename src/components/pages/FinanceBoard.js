@@ -64,12 +64,15 @@ const FinanceBoard = () => {
         })
     }
 
-    const updateRecord = (id) => {
-        records.transactions.map(trans => {
+    const updateRecord = (id, amount, description) => {
+        const newTrans = records.transactions.map( trans => {
             if(trans.id === id) {
-                trans.amount = data
+                trans.amount = amount;
+                trans.description = description;
             }
+            return trans;
         })
+        setRecords({ transactions: newTrans });
     }
 
     return (
