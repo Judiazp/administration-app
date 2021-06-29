@@ -8,29 +8,7 @@ import './financeBoard.css'
 const FinanceBoard = () => {
 
     const [records, setRecords] = useState({
-        transactions: [
-            {
-                date: '28/02/2021',
-                operation: 'Egreso',
-                amount: '2000',
-                description: 'Netflix',
-                id: 0,
-            },
-            {
-                date: '30/01/2021',
-                operation: 'Ingreso',
-                amount: '1500',
-                description: 'Luz',
-                id: 1,
-            },
-            {
-                date: '2/02/2021',
-                operation: 'Ingreso',
-                amount: '700',
-                description: 'Gas',
-                id: 2,
-            }
-        ]
+        transactions: []
     })
 
     const addRecord = (operation, amount, description) => {
@@ -67,12 +45,10 @@ const FinanceBoard = () => {
     const updateRecord = (id, amount, description) => {
         const newTrans = records.transactions.map( trans => {
             if(trans.id === id) {
-                trans.amount = amount;
-                trans.description = description;
+                setRecords({ transactions: newTrans });
             }
             return trans;
         })
-        setRecords({ transactions: newTrans });
     }
 
     return (
