@@ -14,7 +14,7 @@ const FormEdit = ({ trans, updateRecord }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(formEditData);
-        updateRecord(trans.id, amount, description)
+        // updateRecord(trans.id, amount, description)
     }
 
 
