@@ -10,7 +10,7 @@ const Transaction = (props) => {
     const [editData, setEditData] = useState(false)
 
     if (trans.operation === 'Ingreso'){
-        style = {
+        style = { 
             background: 'rgb(93,192,97, 0.5)',
         }
     } else {
@@ -23,10 +23,8 @@ const Transaction = (props) => {
         deleteRecord(trans.id);
     }
 
-    console.log(trans.id);
-
     const handleEdit = () => {
-        setEditData(true)
+        setEditData(!editData)
     }
 
     return (
@@ -50,7 +48,14 @@ const Transaction = (props) => {
                     </svg>
                 </button>
             </div>
-            { editData && <FormEdit update = { props } /> }
+            { 
+                editData && 
+                    <FormEdit 
+                        update={ updateRecord } 
+                        transaction={ trans } 
+                        setEditData={ setEditData }
+                    />
+            }
         </div>
     )
 }

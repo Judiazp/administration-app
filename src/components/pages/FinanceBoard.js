@@ -14,7 +14,7 @@ const FinanceBoard = () => {
     const addRecord = (operation, amount, description) => {
         const newTrans = {
             operation: operation,
-            amount: amount,
+            amount: amount, 
             description: description,
             id: records.transactions.length
         }
@@ -43,19 +43,51 @@ const FinanceBoard = () => {
     }
 
     const updateRecord = (id, amount, description) => {
-        const newTrans = records.transactions.map( trans => {
-            if(trans.id === id) {
-                setRecords({ transactions: newTrans });
+        swal( {
+            title: `Actualizando transaccion`,
+            text: '¿Seguro que quiere actualizar esta transacción?',
+            icon: 'warning',
+            buttons: ['Cancelar', 'Confirmar'],
+            dangerMode: true
+        }).then((willDelete) => {
+            if (willDelete) {
+                const newTransaction = records.transactions.map( trans => {
+                    if(trans.id === id) {
+                        trans.amount = amount
+                        trans.description = description
+                    }
+                    return trans;
+                })
+                setRecords({transactions: newTransaction})
+                swal("Operacion actualizada con exito", {icon: 'success'});
+            } else {
+                swal('Operación cancelada', {icon: 'error'})
             }
-            return trans;
         })
+    }
+
+    const balance = () => {
+        let egresos = records.transactions.filter(trans => trans.operation === 'Egreso')
+        let ingresos = records.transactions.filter(trans => trans.operation === 'Ingreso')
+        let totalEgresos = 0;
+        let totalIngresos = 0;
+        
+        for (let i = 0; i < ingresos.length-1; i++) {
+            totalIngresos = ingresos[i].amount + ingresos[i+1].amount 
+        }
+        
+        for (let i = 0; i < egresos.length-1; i++) {
+            totalEgresos = egresos[i].amount + egresos[i+1].amount 
+        }
+
+        return totalIngresos - totalEgresos
     }
 
     return (
         <>
             <Header />
             <section className = "bodyPages">
-                <Form addRecord = { addRecord } />
+                <Form addRecord={ addRecord } balance={ balance } />
                 <Historical
                 transactions = {records.transactions}
                 deleteRecord = { deleteRecord }
