@@ -14,6 +14,7 @@ const TransactionHistory = (props) =>  {
             </article>
             { props.transactions.map(transaction => <Transaction
             trans = { transaction }
+            key={transaction.id}
             deleteRecord = { props.deleteRecord }
             updateRecord = { props.updateRecord }/> )}
         </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from '../../hooks/useForm';
 import './formEdit.css'
 
-const FormEdit = ({ trans, updateRecord }) => {
+const FormEdit = ({ transaction, update, setEditData }) => {
 
     const [formEditData, handleInputChange] = useForm({
         amount: '',
@@ -13,10 +13,13 @@ const FormEdit = ({ trans, updateRecord }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(formEditData);
-        // updateRecord(trans.id, amount, description)
+        update( transaction.id, amount, description )
+        setEditData(false)
     }
 
+    const handleClickCancel = () => {
+        setEditData(false)
+    }
 
     return( 
         <div align="center" className='modal'>
@@ -30,6 +33,7 @@ const FormEdit = ({ trans, updateRecord }) => {
                     placeholder="monto" 
                     onChange={ handleInputChange }
                     name="amount" 
+                    required
                 />
                 <input 
                     className="input-edit" 
@@ -37,10 +41,11 @@ const FormEdit = ({ trans, updateRecord }) => {
                     placeholder="Descripción" 
                     onChange={ handleInputChange }
                     name="description"
+                    required
                 />
                 <div className="contenet-button">
-                    <button className="btn-edit" >Confirmar</button>
-                    <button type="submit" className="btn-edit" >Cancelar</button>
+                    <button className="btn-edit" type='submit' >Confirmar</button>
+                    <button className="btn-edit" onClick={ handleClickCancel } >Cancelar</button>
                 </div>
             </form>
         </div>

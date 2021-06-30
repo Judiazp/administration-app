@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from '../../hooks/useForm';
 
 import './Form.css';
 
 const Form = (props) => {
 
-    const { addRecord } = props;
+    const { addRecord, balance } = props;
 
     const [data, handleInputChange] = useForm({
         operation: '',
@@ -22,16 +22,22 @@ const Form = (props) => {
         <div className="operation">
             <div>
                 <h2>Balance</h2>
-                <h3>{ data.amount } $</h3>
+                <h3>{ balance() } $</h3>
             </div>
             <form className="form" onSubmit = { onSubmit } >
                 <h3 style={{ color: '#fff' }}>Nueva Operación</h3>
-                <select  name="operation" className="input" onChange={ handleInputChange }>
+                <select  
+                    name="operation" 
+                    className="input" 
+                    onChange={ handleInputChange }
+                    required
+                >
+                    <option disabled selected="selected">Operación</option>
                     <option value="Ingreso">Ingreso</option>
                     <option value="Egreso">Egreso</option>
                 </select>
-                <input type="number" name="amount" placeholder="Ingrese Monto" className="input" onChange = { handleInputChange }/>
-                <textarea name="description" placeholder="Alquiler, mercado, etc" className="description" onChange={ handleInputChange }/>
+                <input type="number" name="amount" placeholder="Ingrese Monto" className="input" onChange = { handleInputChange } required />
+                <textarea name="description" placeholder="Alquiler, mercado, etc" className="description" onChange={ handleInputChange } required />
                 <button className="button" type="submit">Agregar</button>
             </form>
         </div>
