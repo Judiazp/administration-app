@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm } from '../../../hooks/useForm';
-
 import './form.css';
 
 const Form = (props) => {
