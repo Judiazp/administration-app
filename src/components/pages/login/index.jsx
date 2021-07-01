@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useForm } from '../hooks/useForm';
-import Header from '../organisms/header/header'
+import React from 'react';
+import { useForm } from '../../../hooks/useForm';
+import Header from '../../molecules/header'
 import './login.css'
 
 const Login = () =>  {
@@ -16,8 +16,6 @@ const Login = () =>  {
     passwordRegister: ''
 })
 
-    const [modal, setModal] = useState(true);
-
     const show = () => {
         const signupOpen = document.querySelector('.signupForm');
         const loginClosed = document.querySelector('.login');
@@ -29,10 +27,6 @@ const Login = () =>  {
         e.preventDefault()
         console.log(formLogin);
         console.log(formRegister)
-    }
-
-    const handleClick = () => {
-        setModal(false)
     }
 
     return (
@@ -98,26 +92,7 @@ const Login = () =>  {
                         </span>
                     </p>
                 </form>
-            </div>
-
-            {
-                modal && (
-                    <div className="message-advertencia" align="center">
-                        <p>
-                            Es 
-                            posible que la interfaz tenga errores de diseño, esto se debe a que los esfuerzos
-                            de desarrollo estan enfocados inicialmente en la funcionalidad de la plataforma. Posteriormente
-                            la interfaz será ampliamente mejorada para una mejor experiencia. Si desea ver y probar el dashboard
-                            de la app agregue a la url la siguiente dirección: /board
-                        </p>
-                        <button className="btnInit" onClick={ handleClick }>
-                            continuar
-                        </button>
-                    </div>
-                )
-            }
-
-            
+            </div>            
         </div>
     )
 }

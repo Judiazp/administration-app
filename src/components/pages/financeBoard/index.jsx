@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import Form from '../organisms/form/Form';
-import Historical from '../organisms/historical/Historical';
+import Form from '../../molecules/form';
+import Historical from '../../organisms/historical';
 import swal from 'sweetalert';
-import Header from '../organisms/header/header'
+import Header from '../../molecules/header'
+import { Balance } from '../../organisms/balance';
+
 import './financeBoard.css'
 
 const FinanceBoard = () => {
@@ -10,6 +12,9 @@ const FinanceBoard = () => {
     const [records, setRecords] = useState({
         transactions: []
     })
+
+    const [modal, setModal] = useState(true);
+
 
     const addRecord = (operation, amount, description) => {
         const newTrans = {
@@ -66,33 +71,41 @@ const FinanceBoard = () => {
         })
     }
 
-    const balance = () => {
-        let egresos = records.transactions.filter(trans => trans.operation === 'Egreso')
-        let ingresos = records.transactions.filter(trans => trans.operation === 'Ingreso')
-        let totalEgresos = 0;
-        let totalIngresos = 0;
-        
-        for (let i = 0; i < ingresos.length-1; i++) {
-            totalIngresos = ingresos[i].amount + ingresos[i+1].amount 
-        }
-        
-        for (let i = 0; i < egresos.length-1; i++) {
-            totalEgresos = egresos[i].amount + egresos[i+1].amount 
-        }
-
-        return totalIngresos - totalEgresos
+    let egresos = records.transactions.filter(trans => trans.operation === 'Egreso')
+    let ingresos = records.transactions.filter(trans => trans.operation === 'Ingreso')
+    let totalEgresos = 0;
+    let totalIngresos = 0;
+    
+    const handleClick = () => {
+        setModal(false)
     }
 
     return (
         <>
             <Header />
+            <Balance expenses={ totalEgresos } income={ totalIngresos } />
             <section className = "bodyPages">
-                <Form addRecord={ addRecord } balance={ balance } />
+                <Form addRecord={ addRecord } />
                 <Historical
                 transactions = {records.transactions}
                 deleteRecord = { deleteRecord }
                 updateRecord = { updateRecord } />
             </section>
+
+            {
+                modal && (
+                    <div className="message-advertencia" align="center">
+                        <p>
+                            Es posible que la interfaz tenga errores de diseño, esto se debe a que los esfuerzos
+                            de desarrollo estan enfocados inicialmente en la funcionalidad de la plataforma. Posteriormente
+                            la interfaz será ampliamente mejorada para una mejor experiencia.
+                        </p>
+                        <button className="btnInit" onClick={ handleClick }>
+                            continuar
+                        </button>
+                    </div>
+                )
+            }
         </>
     )
 }
