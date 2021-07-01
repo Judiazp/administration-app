@@ -2,7 +2,6 @@ import React from 'react'
 import './balance.css'
 
 export const Balance = ( { expenses, income } ) => {
-    // console.log(props);
     return (
         <div className="balance">
             <div className="content-icome content-item-balance">
