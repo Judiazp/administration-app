@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import FormEdit from '../editTransacction';
-import './Transaction.css';
+import FormEdit from '../../molecules/editTransacction';
+import './transaction.css';
 
 const Transaction = (props) => {
 

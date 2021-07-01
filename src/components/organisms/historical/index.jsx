@@ -1,6 +1,6 @@
 import React from 'react';
-import './Historical.css';
-import Transaction from '../transaction/Transaction'
+import Transaction from '../transaction'
+import './historical.css';
 
 const TransactionHistory = (props) =>  {
 

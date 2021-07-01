@@ -1,8 +1,9 @@
 .transactionHistory {
     background-color: #292929;
-    border-left: 5px solid #222222;
-    height: 100vh;
-    width: 430px;
+    border-radius: 10px;
+    padding: 20px;
+    max-height: 100vh;
+    width: 40%;
     color: #fff;
 }
 
@@ -48,3 +49,14 @@
     text-align: center;
     font-weight: 400;
 }
+
+@media (max-width: 600px) {
+    .transactionHistory {
+        padding: 20px;
+        max-height: 100vh;
+        width: 80%;
+        color: #fff;
+        margin-top: 30px;
+
+    }
+  }

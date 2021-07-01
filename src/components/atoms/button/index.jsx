@@ -1,7 +1,7 @@
 import React from 'react';
 import './buttonLogout.css'
 
-const btnLogout = () => {
+const Button = () => {
     return (
         <div className = "btns">
             <a href ="#"  className = "buttons">Cerrar sesión</a>
@@ -9,4 +9,4 @@ const btnLogout = () => {
     )
 }
 
-export default btnLogout;
+export default Button;

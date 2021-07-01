@@ -1,18 +1,13 @@
-.operation {
-    margin: auto;
-    color: #fff;
-    height: 100vh;
-}
-
 .form {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 20%;
     padding: 30px;
     border-radius: 7px;
     background-color: rgb(34,34,34);
     border: 2px solid rgb(41,41,41);
     margin: 0px;
+    max-height: 300px;
 }
 
 .input {
@@ -56,4 +51,16 @@
 
 .button:hover {
     background-color: #2ea043;
+}
+
+@media (max-width: 600px) {
+    .form {
+        width: 70%;
+        padding: 30px;
+        border-radius: 7px;
+        background-color: rgb(34,34,34);
+        border: 2px solid rgb(41,41,41);
+        margin: 0px;
+        max-height: 300px;
+    }
 }
