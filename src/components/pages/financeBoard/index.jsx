@@ -14,13 +14,6 @@ const FinanceBoard = () => {
     })
 
     const [modal, setModal] = useState(true);
-    // const [balance, setBalance] = useState({
-    //     ingresos: 0,
-    //     egresos: 0,
-    // })
-
-    // const { ingresos, egresos } = balance
-
 
     const addRecord = (operation, amount, description) => {
         const newTrans = {
@@ -76,10 +69,7 @@ const FinanceBoard = () => {
             }
         })
     }
-
-    // let egresos = records.transactions.filter(trans => trans.operation === 'Egreso')
-    // let ingresos = records.transactions.filter(trans => trans.operation === 'Ingreso')
-    
+   
     const handleClick = () => {
         setModal(false)
     }
@@ -87,7 +77,7 @@ const FinanceBoard = () => {
     return (
         <>
             <Header />
-            <Balance  />
+            <Balance records={ records } />
             <section className = " bodyPages">
                 <Form addRecord={ addRecord } />
                 <Historical

@@ -1,10 +1,27 @@
-.balance {
+.content-balance { 
     color: #fff;
-    height: 20%;
+}
+
+.content-calculation {
     width: 100%;
     display: flex;
     justify-content: center; 
-    margin-bottom: 50px;
+    margin: 0 50px;
+}
+
+.balance-calculation {
+    background-color: #292929;
+    padding: 10px 20px 10px 20px; 
+    text-align: center;
+    margin: 50px;
+    border-radius: 10px;
+}
+
+.balance {
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    margin: 50px;
 }
 
 .content-item-balance {
