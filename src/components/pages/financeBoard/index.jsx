@@ -14,12 +14,12 @@ const FinanceBoard = () => {
     })
 
     const [modal, setModal] = useState(true);
-    const [balance, setBalance] = useState({
-        ingresos: 0,
-        egresos: 0,
-    })
+    // const [balance, setBalance] = useState({
+    //     ingresos: 0,
+    //     egresos: 0,
+    // })
 
-    const { ingresos, egresos } = balance
+    // const { ingresos, egresos } = balance
 
 
     const addRecord = (operation, amount, description) => {
@@ -87,8 +87,8 @@ const FinanceBoard = () => {
     return (
         <>
             <Header />
-            <Balance expenses={ egresos } income={ ingresos } />
-            <section className = "bodyPages">
+            <Balance  />
+            <section className = " bodyPages">
                 <Form addRecord={ addRecord } />
                 <Historical
                 transactions = {records.transactions}
