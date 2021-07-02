@@ -4,7 +4,7 @@ import './form.css';
 
 const Form = (props) => {
 
-    const { addRecord, balance } = props;
+    const { addRecord } = props;
 
     const [data, handleInputChange] = useForm({
         operation: '',
