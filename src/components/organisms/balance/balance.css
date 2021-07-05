@@ -1,32 +1,35 @@
 .content-balance { 
     color: #fff;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .content-calculation {
     width: 100%;
     display: flex;
     justify-content: center; 
-    margin: 0 50px;
 }
 
 .balance-calculation {
     background-color: #292929;
-    padding: 10px 20px 10px 20px; 
+    padding: 10px 0px 10px 0px; 
     text-align: center;
-    margin: 50px;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
+    width: 30%;
 }
 
 .balance {
     width: 100%;
     display: flex;
     justify-content: center; 
-    margin: 50px;
 }
 
 .content-item-balance {
-    padding: 40px;
     text-align: center;
+    width: 15%;
 }
 
 .content-icome {
@@ -37,4 +40,14 @@
 .content-expenses {
     background-color: rgb(229,61,47, 0.5);
     border-radius: 0px 0px 10px 0px;
+}
+
+@media (max-width: 600px) {
+    .content-item-balance {
+        width: 40%;
+    }
+
+    .balance-calculation {
+        width: 80%;
+    }
 }

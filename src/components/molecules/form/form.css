@@ -1,18 +1,34 @@
+.content-form {
+    background-color: rgba(14, 12, 12, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
 .form {
     display: flex;
     flex-direction: column;
     width: 20%;
-    padding: 30px;
+    padding: 2em;
     border-radius: 7px;
     background-color: rgb(34,34,34);
     border: 2px solid rgb(41,41,41);
-    margin: 0px;
     max-height: 300px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1em;
 }
 
 .input {
     border: 0.5px solid gray;
-    padding: 10px;
+    padding: 10px; 
     border-radius: 5px;
     outline: none;
     background-color: rgb(33,38,45);
@@ -36,6 +52,12 @@
     transform: scale(1.025);
 }
 
+.content-btns {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
 .button {
     padding: 10px;
     background-color: #348637;
@@ -43,6 +65,7 @@
     border-radius: 10px;
     border: none;
     color: #fff;
+    width: 40%;
 }
 
 .button:hover {

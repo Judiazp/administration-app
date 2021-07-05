@@ -1,15 +1,76 @@
-.bodyPages   {
+.content-graph-form   {
+    color: #fff;
     display: flex;
+    align-items: center;
+    margin: 50px;
     justify-content: space-around;
 }
 
+.graph {
+    animation: animateFondo 2s infinite linear;
+    width: 60%;
+    padding: 20px;
+    text-align: center;
+    height: 100%;
+    background: linear-gradient(to right, rgb(229,61,47, 0.5), rgb(93,192,97, 0.5));
+    border-radius: 10px;
+}
+
+@keyframes animateFondo{
+    0%{background-position: left; background-color: rgb(229,61,47, 0.5);} 
+    80%{background-position: right; background-color: rgb(93,192,97, 0.5);}
+}
+
+.content-buttons {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.btn-add-transaction {
+    width: 80%;
+    padding: 20px;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.add-expenses {
+    background-color: rgb(229,61,47, 0.5);
+}
+
+.add-expenses:hover {
+    background-color: rgb(229,61,47);
+}
+
+.add-revenues {
+    background-color: rgb(93,192,97, 0.5);
+}
+
+.add-revenues:hover {
+    background-color: #2ea043;
+}
 
 @media (max-width: 600px) {
-    .bodyPages {
-        display: flex;
+    .content-graph-form {
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    }
+
+    .graph {
+        width: 90%;
+    }
+    .content-buttons {
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 20px;
+        width: 100%;
+    }
+    .btn-add-transaction {
+        width: 45%;
     }
   }
   
