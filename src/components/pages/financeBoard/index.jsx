@@ -13,7 +13,11 @@ const FinanceBoard = () => {
         transactions: []
     })
 
-    const [modal, setModal] = useState(true);
+    const [modal, setModal] = useState(false);
+    const [advertencia, setAdvertencia] = useState(false);
+
+
+    const [typeTransaction, setTypeTransaction] = useState()
 
     const addRecord = (operation, amount, description) => {
         const newTrans = {
@@ -71,23 +75,47 @@ const FinanceBoard = () => {
     }
    
     const handleClick = () => {
-        setModal(false)
+        setAdvertencia(false)
     }
+
+    const handleClickAddRevenues = () => {
+        setTypeTransaction('Ingreso')
+        setModal(true)
+        console.log(typeTransaction);
+    }
+
+    const handleClickAddExpenses = () => {
+        setTypeTransaction('Egreso')
+        setModal(true)
+        console.log(typeTransaction);
+    }
+
 
     return (
         <>
+            { modal && <Form addRecord={ addRecord } typeTransaction={ typeTransaction } setTypeTransaction={ setTypeTransaction } setModal={ setModal } /> }
             <Header />
             <Balance records={ records } />
-            <section className = " bodyPages">
-                <Form addRecord={ addRecord } />
+            <div className = "content-graph-form">
+                <div className="graph">
+                    <h1>Gráficas proximamente</h1>
+                </div>
+                <div className="content-buttons">
+                    <button className="btn-add-transaction add-revenues" onClick={ handleClickAddRevenues }>
+                        Agregar Ingreso
+                    </button>
+                    <button className="btn-add-transaction add-expenses" onClick={handleClickAddExpenses}>
+                        Agregar Egreso
+                    </button>
+                </div>
+            </div>
                 <Historical
                 transactions = {records.transactions}
                 deleteRecord = { deleteRecord }
                 updateRecord = { updateRecord } />
-            </section>
 
             {
-                modal && (
+                advertencia && (
                     <div className="message-advertencia" align="center">
                         <p>
                             Es posible que la interfaz tenga errores de diseño, esto se debe a que los esfuerzos

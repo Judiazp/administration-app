@@ -19,7 +19,7 @@ export const Balance = ({ records }) => {
     return (
         <div className="content-balance">
             <div className="content-calculation">
-                <div className="balance-calculation balance-calculation">
+                <div className="balance-calculation">
                     <h3>Balance: { totalRevenues - totalExpenses } </h3>
                 </div>
             </div>

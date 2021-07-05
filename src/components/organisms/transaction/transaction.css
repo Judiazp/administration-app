@@ -5,17 +5,12 @@
     justify-content: space-around;
     transition: 450ms;
     width: 95%;
-    margin-left: 15px;
+    margin: auto;
 }
 
 .transaction p {
     width: 100px;
     text-align: center;
-}
-
-.transaction:hover {
-    transform: translate3d(10px, 0, 0);
-    border-color: white;
 }
 
 .btn {
