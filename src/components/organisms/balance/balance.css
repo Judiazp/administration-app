@@ -1,6 +1,7 @@
 .content-balance { 
     color: #fff;
     height: 30vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,7 +19,7 @@
     padding: 10px 0px 10px 0px; 
     text-align: center;
     border-radius: 10px 10px 0 0;
-    width: 30%;
+    width: 80%;
 }
 
 .balance {
@@ -29,7 +30,7 @@
 
 .content-item-balance {
     text-align: center;
-    width: 15%;
+    width: 40%;
 }
 
 .content-icome {
@@ -44,10 +45,10 @@
 
 @media (max-width: 600px) {
     .content-item-balance {
-        width: 40%;
+        width: 50%;
     }
 
     .balance-calculation {
-        width: 80%;
+        width: 100%;
     }
 }

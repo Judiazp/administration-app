@@ -99,12 +99,12 @@ const FinanceBoard = () => {
         <>
             { modal && <Form addRecord={ addRecord } typeTransaction={ typeTransaction } setTypeTransaction={ setTypeTransaction } setModal={ setModal } /> }
             <Header />
-            <Balance records={ records } />
             <div className = "content-graph-form">
                 <div className="graph">
-                    <h1>Gráficas proximamente</h1>
+                    <h1>Gráficas proximamente...</h1>
                 </div>
                 <div className="content-buttons">
+                    <Balance records={ records } />
                     <button className="btn-add-transaction add-revenues" onClick={ handleClickAddRevenues }>
                         Agregar Ingreso
                     </button>
