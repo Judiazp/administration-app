@@ -16,7 +16,7 @@ const FinanceBoard = () => {
     const [modal, setModal] = useState(false);
     const [typeTransaction, setTypeTransaction] = useState()
 
-    const addRecord = (operation, amount, description) => {
+    const addRecord = (operation, amount, description, date) => {
         swal( {
             title: `Agregando transacción`,
             text: '¿Seguro que quiere agregar esta transacción?',
@@ -29,6 +29,7 @@ const FinanceBoard = () => {
                     operation: operation,
                     amount: amount, 
                     description: description,
+                    date: date,
                     id: records.transactions.length
                 }
 
@@ -93,7 +94,6 @@ const FinanceBoard = () => {
         setTypeTransaction('Egreso')
         setModal(true)
     }
-
 
     return (
         <>

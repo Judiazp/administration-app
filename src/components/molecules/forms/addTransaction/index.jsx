@@ -5,16 +5,25 @@ import '../forms.css';
 const Form = (props) => {
     
     const { addRecord, typeTransaction, setTypeTransaction, setModal } = props;
+    const date = new Date()
 
     const [data, handleInputChange] = useForm({
         operation: typeTransaction,
         amount: '',
         description: '',
+        date: {
+            dd: date.getDate(),
+            mm: date.getMonth() + 1,
+            yy: date.getFullYear(),
+            hr: date.getHours(),
+            min: date.getMinutes(),
+            seconds: date.getSeconds()
+        }
     })
 
     const onSubmit = event => {
         event.preventDefault();
-        addRecord(data.operation, data.amount, data.description);
+        addRecord(data.operation, data.amount, data.description, data.date);
         setTypeTransaction()
         setModal(false)
     }
