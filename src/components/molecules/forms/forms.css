@@ -2,7 +2,10 @@
     background-color: rgba(14, 12, 12, 0.6);
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: hidden;
 }
 
 .form {
@@ -69,7 +72,15 @@
 }
 
 .button:hover {
-    background-color: #2ea043;
+    background-color: #2ea043; 
+}
+
+.btn-cancel {
+    background-color: rgb(229,61,47, 0.5);
+}
+
+.btn-cancel:hover {
+    background-color: rgb(229,61,47);
 }
 
 @media (max-width: 600px) {
