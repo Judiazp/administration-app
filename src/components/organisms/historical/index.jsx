@@ -19,12 +19,14 @@ const TransactionHistory = (props) =>  {
     return (
         <section className="content-history">
             <div className='transactionHistory'>
-                <h2 className='title'>Historial de Transacciones</h2>
-                <article className='btns'>
-                    <button className='filtros' name="revenues" onClick={ (e) => handleClick(e) }>Ingresos</button>
-                    <button className='filtroEgr filtros' name='expenses' onClick={ (e) => handleClick(e) }>Egresos</button>
-                    <button className='filtros' name='everyone' onClick={ (e) => handleClick(e) }>Todos</button>
-                </article>
+                <div className="content-filter">
+                    <h2 className='title'>Historial de Transacciones</h2>
+                    <article className='btns'>
+                        <button className='filtros' name="revenues" onClick={ (e) => handleClick(e) }>Ingresos</button>
+                        <button className='filtroEgr filtros' name='expenses' onClick={ (e) => handleClick(e) }>Egresos</button>
+                        <button className='filtros' name='everyone' onClick={ (e) => handleClick(e) }>Todos</button>
+                    </article>
+                </div>
                 { 
                     (filtros === 'everyone') && (
                         props.transactions.map(transaction => <Transaction
