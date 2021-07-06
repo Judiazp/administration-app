@@ -1,6 +1,6 @@
 import React from 'react';
-import { useForm } from '../../../hooks/useForm';
-import './formEdit.css'
+import { useForm } from '../../../../hooks/useForm';
+import '../forms.css';
 
 const FormEdit = ({ transaction, update, setEditData }) => {
 
@@ -22,13 +22,13 @@ const FormEdit = ({ transaction, update, setEditData }) => {
     }
 
     return( 
-        <div align="center" className='modal'>
-            <form className="form-edit" onSubmit={ handleSubmit }>
-                <h1>
+        <div className="content-form">
+            <form className="form" onSubmit={ handleSubmit }>
+                <h2>
                     Editar transacción
-                </h1>
+                </h2>
                 <input 
-                    className="input-edit" 
+                    className="input" 
                     type="number" 
                     placeholder="monto" 
                     onChange={ handleInputChange }
@@ -36,16 +36,16 @@ const FormEdit = ({ transaction, update, setEditData }) => {
                     required
                 />
                 <input 
-                    className="input-edit" 
+                    className="input" 
                     type="text" 
                     placeholder="Descripción" 
                     onChange={ handleInputChange }
                     name="description"
                     required
                 />
-                <div className="contenet-button">
-                    <button className="btn-edit" type='submit' >Confirmar</button>
-                    <button className="btn-edit" onClick={ handleClickCancel } >Cancelar</button>
+                <div className="content-btns">
+                    <button className="button" type='submit' >Confirmar</button>
+                    <button className="button btn-cancel" onClick={ handleClickCancel } >Cancelar</button>
                 </div>
             </form>
         </div>

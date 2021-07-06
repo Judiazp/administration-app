@@ -1,6 +1,6 @@
 import React from 'react';
-import { useForm } from '../../../hooks/useForm';
-import './form.css';
+import { useForm } from '../../../../hooks/useForm';
+import '../forms.css';
 
 const Form = (props) => {
     
@@ -25,13 +25,13 @@ const Form = (props) => {
 
     return (
         <div className="content-form">
-            <form className="form" onSubmit = { onSubmit } >
+            <form className="form" onSubmit={ onSubmit } >
                 <h2> { typeTransaction } </h2>
                 <input type="number" name="amount" placeholder="Ingrese Monto" className="input" onChange = { handleInputChange } required />
                 <textarea name="description" placeholder="Alquiler, mercado, etc" className="description" onChange={ handleInputChange } required />
                 <div className="content-btns">
                     <button className="button" type="submit">Agregar</button>
-                    <button className="button add-expenses" onClick={ handleClickCancel }>Cancelar</button>
+                    <button className="button btn-cancel" onClick={ handleClickCancel }>Cancelar</button>
                 </div>
             </form>
         </div>

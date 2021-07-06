@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import Form from '../../molecules/form';
+import Form from '../../molecules/forms/addTransaction';
 import Historical from '../../organisms/historical';
 import swal from 'sweetalert';
 import Header from '../../molecules/header'
 import { Balance } from '../../organisms/balance';
+import { Footer } from '../../molecules/footer';
 
 import './financeBoard.css'
 
@@ -12,29 +13,38 @@ const FinanceBoard = () => {
     const [records, setRecords] = useState({
         transactions: []
     })
-
     const [modal, setModal] = useState(false);
-    const [advertencia, setAdvertencia] = useState(false);
-
-
     const [typeTransaction, setTypeTransaction] = useState()
 
     const addRecord = (operation, amount, description) => {
-        const newTrans = {
-            operation: operation,
-            amount: amount, 
-            description: description,
-            id: records.transactions.length
-        }
+        swal( {
+            title: `Agregando transacción`,
+            text: '¿Seguro que quiere agregar esta transacción?',
+            icon: 'warning',
+            buttons: ['Cancelar', 'Confirmar'],
+            dangerMode: true
+        }).then((willDelete) => {
+            if (willDelete) {
+                const newTrans = {
+                    operation: operation,
+                    amount: amount, 
+                    description: description,
+                    id: records.transactions.length
+                }
 
-        setRecords({
-            transactions: [...records.transactions, newTrans]
+                setRecords({
+                    transactions: [...records.transactions, newTrans]
+                })
+                swal("Operacion eliminada con exito", {icon: 'success'});
+            } else {
+                swal('Operación cancelada', {icon: 'error'})
+            }
         })
     }
 
     const deleteRecord = (id) => {
         swal( {
-            title: `Eliminando transaccion`,
+            title: `Eliminando transacción`,
             text: '¿Seguro que quiere eliminar esta transacción?',
             icon: 'warning',
             buttons: ['Cancelar', 'Confirmar'],
@@ -52,7 +62,7 @@ const FinanceBoard = () => {
 
     const updateRecord = (id, amount, description) => {
         swal( {
-            title: `Actualizando transaccion`,
+            title: `Actualizando transacción`,
             text: '¿Seguro que quiere actualizar esta transacción?',
             icon: 'warning',
             buttons: ['Cancelar', 'Confirmar'],
@@ -73,21 +83,15 @@ const FinanceBoard = () => {
             }
         })
     }
-   
-    const handleClick = () => {
-        setAdvertencia(false)
-    }
 
     const handleClickAddRevenues = () => {
         setTypeTransaction('Ingreso')
         setModal(true)
-        console.log(typeTransaction);
     }
 
     const handleClickAddExpenses = () => {
         setTypeTransaction('Egreso')
         setModal(true)
-        console.log(typeTransaction);
     }
 
 
@@ -109,25 +113,12 @@ const FinanceBoard = () => {
                     </button>
                 </div>
             </div>
-                <Historical
+            <Historical
                 transactions = {records.transactions}
                 deleteRecord = { deleteRecord }
-                updateRecord = { updateRecord } />
-
-            {
-                advertencia && (
-                    <div className="message-advertencia" align="center">
-                        <p>
-                            Es posible que la interfaz tenga errores de diseño, esto se debe a que los esfuerzos
-                            de desarrollo estan enfocados inicialmente en la funcionalidad de la plataforma. Posteriormente
-                            la interfaz será ampliamente mejorada para una mejor experiencia.
-                        </p>
-                        <button className="btnInit" onClick={ handleClick }>
-                            continuar
-                        </button>
-                    </div>
-                )
-            }
+                updateRecord = { updateRecord } 
+            />
+            <Footer/>
         </>
     )
 }
