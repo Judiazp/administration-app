@@ -9,7 +9,7 @@ const Form = (props) => {
 
     const [data, handleInputChange] = useForm({
         operation: typeTransaction,
-        amount: '',
+        amount: 0,
         description: '',
         date: {
             dd: date.getDate(),
@@ -36,8 +36,22 @@ const Form = (props) => {
         <div className="content-form">
             <form className="form" onSubmit={ onSubmit } >
                 <h2> { typeTransaction } </h2>
-                <input type="number" name="amount" placeholder="Ingrese Monto" className="input" onChange = { handleInputChange } required />
-                <textarea name="description" placeholder="Alquiler, mercado, etc" className="description" onChange={ handleInputChange } required />
+                <input 
+                    type="number" 
+                    name="amount" 
+                    placeholder="Ingrese monto" 
+                    className="input" 
+                    onChange = { handleInputChange } 
+                    step="0.001" 
+                    required 
+                />
+                <textarea 
+                    name="description" 
+                    placeholder="Alquiler, mercado..." 
+                    className="description" 
+                    onChange={ handleInputChange } 
+                    required 
+                />
                 <div className="content-btns">
                     <button className="button" type="submit">Agregar</button>
                     <button className="button btn-cancel" onClick={ handleClickCancel }>Cancelar</button>

@@ -8,6 +8,3 @@ export const Footer = () => {
         </footer>
     )
 }
-
-
-// registro de locacion de inmuebles

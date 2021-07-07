@@ -1,0 +1,12 @@
+
+.no-records {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.no-records h3 {
+    margin: auto;
+}
