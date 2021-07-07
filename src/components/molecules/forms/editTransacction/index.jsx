@@ -34,6 +34,7 @@ const FormEdit = ({ transaction, update, setEditData }) => {
                     onChange={ handleInputChange }
                     name="amount" 
                     required
+                    step="0.001"
                 />
                 <input 
                     className="input" 

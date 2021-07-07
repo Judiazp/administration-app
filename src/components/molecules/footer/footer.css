@@ -4,4 +4,15 @@
     background-color: #2A2F32;
     text-align: center;
     border-top: 2px solid #222222;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    position: absolute;
 }
+
+@media (max-width: 600px) {
+    .footer {
+        position: relative;
+        margin-top: 2em;
+    }
+  }

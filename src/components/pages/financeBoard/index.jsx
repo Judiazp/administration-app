@@ -36,7 +36,7 @@ const FinanceBoard = () => {
                 setRecords({
                     transactions: [...records.transactions, newTrans]
                 })
-                swal("Operacion eliminada con exito", {icon: 'success'});
+                swal("Transacción agregada con exito", {icon: 'success'});
             } else {
                 swal('Operación cancelada', {icon: 'error'})
             }
@@ -54,7 +54,7 @@ const FinanceBoard = () => {
             if (willDelete) {
                 const newTrans = records.transactions.filter(trans => trans.id !== id);
                 setRecords({transactions: newTrans})
-                swal("Operacion eliminada con exito", {icon: 'success'});
+                swal("Transacción eliminada con exito", {icon: 'success'});
             } else {
                 swal('Operación cancelada', {icon: 'error'})
             }
@@ -78,7 +78,7 @@ const FinanceBoard = () => {
                     return trans;
                 })
                 setRecords({transactions: newTransaction})
-                swal("Operacion actualizada con exito", {icon: 'success'});
+                swal("Transacción actualizada con exito", {icon: 'success'});
             } else {
                 swal('Operación cancelada', {icon: 'error'})
             }
@@ -96,7 +96,7 @@ const FinanceBoard = () => {
     }
 
     return (
-        <>
+        <div>
             { modal && <Form addRecord={ addRecord } typeTransaction={ typeTransaction } setTypeTransaction={ setTypeTransaction } setModal={ setModal } /> }
             <Header />
             <div className = "content-graph-form">
@@ -119,7 +119,7 @@ const FinanceBoard = () => {
                 updateRecord = { updateRecord } 
             />
             <Footer/>
-        </>
+        </div>
     )
 }
 

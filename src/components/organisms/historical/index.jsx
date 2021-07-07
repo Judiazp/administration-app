@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import Transaction from '../transaction'
+import Transaction from '../transaction';
+import { NoRecords } from '../../atoms/noRecords';
 import './historical.css';
 
-const TransactionHistory = (props) =>  {
+const TransactionHistory = ({ transactions, deleteRecord, updateRecord }) =>  {
 
+    // const { transactions } = props
     const [filtros, setFiltros] = useState('everyone')
+    const revenues = transactions.filter(({operation}) => operation === 'Ingreso')
+    const expenses = transactions.filter(({operation}) => operation === 'Egreso')
 
     const handleClick = (e) => {
         if (e.target.name === 'revenues') {
@@ -15,6 +19,7 @@ const TransactionHistory = (props) =>  {
             setFiltros('everyone')
         }
     }
+
 
     return (
         <section className="content-history">
@@ -27,39 +32,55 @@ const TransactionHistory = (props) =>  {
                         <button className='filtros' name='everyone' onClick={ (e) => handleClick(e) }>Todos</button>
                     </article>
                 </div>
-                { 
-                    (filtros === 'everyone') && (
-                        props.transactions.map(transaction => <Transaction
-                            trans = { transaction }
-                            key={transaction.id}
-                            deleteRecord = { props.deleteRecord }
-                            updateRecord = { props.updateRecord }
-                        />)
-                    )
-                }
-                {
-                    (filtros === 'revenues') && (
-                      props.transactions.filter(({operation}) => operation === 'Ingreso').map(transaction => 
-                        <Transaction
-                            trans = { transaction }
-                            key={transaction.id}
-                            deleteRecord = { props.deleteRecord }
-                            updateRecord = { props.updateRecord }
-                        />)
-                    )
-                }
-                {
-                    (filtros === 'expenses') && (
-                        props.transactions.filter(({operation}) => operation === 'Egreso').map(transaction => 
-                            <Transaction
+                <div className="content-transaction">
+                    { 
+                        (filtros === 'everyone') && (
+                            transactions.map(transaction => 
+                                <Transaction
                                 trans = { transaction }
                                 key={transaction.id}
-                                deleteRecord = { props.deleteRecord }
-                                updateRecord = { props.updateRecord }
-                            />
+                                deleteRecord = { deleteRecord }
+                                updateRecord = { updateRecord }
+                                />
+                                )
+                                )
+                    }
+
+                    {
+                        (transactions.length === 0) && (
+                            <NoRecords/>
                         )
-                    )
-                }
+                    }
+                    
+                    {
+                        (filtros === 'revenues') && (
+                            (revenues.length === 0) ?  <NoRecords/> : (
+                                revenues.map(transaction => 
+                                    <Transaction
+                                        trans = { transaction }
+                                        key={transaction.id}
+                                        deleteRecord = { deleteRecord }
+                                        updateRecord = { updateRecord }
+                                    />
+                                )
+                            )
+                        )
+                    }
+                    {
+                        (filtros === 'expenses') && (
+                            (expenses.length === 0) ? <NoRecords/> : (
+                                expenses.map(transaction => 
+                                    <Transaction
+                                        trans = { transaction }
+                                        key={transaction.id}
+                                        deleteRecord = { deleteRecord }
+                                        updateRecord = { updateRecord }
+                                    />
+                                )
+                            )
+                        )
+                    }
+                </div>
             </div>
         </section>
     )
