@@ -11,14 +11,7 @@ const Form = (props) => {
         operation: typeTransaction,
         amount: 0,
         description: '',
-        date: {
-            dd: date.getDate(),
-            mm: date.getMonth() + 1,
-            yy: date.getFullYear(),
-            hr: date.getHours(),
-            min: date.getMinutes(),
-            seconds: date.getSeconds()
-        }
+        date: date.toLocaleString()
     })
 
     const onSubmit = event => {

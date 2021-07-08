@@ -35,7 +35,7 @@ const Transaction = (props) => {
     return (
         <div >
             <div className="transaction" style= { style }>
-                <p> { date.dd }/{ date.mm }/{ date.yy }, { date.hr }:{ date.min }:{ date.seconds }</p>
+                <p className="date"> { date } </p>
                 <p name="description">
                     { description }
                 </p>
