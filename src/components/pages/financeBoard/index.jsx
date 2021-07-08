@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Form from '../../molecules/forms/addTransaction';
 import Historical from '../../organisms/historical';
 import swal from 'sweetalert';
@@ -10,11 +10,14 @@ import './financeBoard.css'
 
 const FinanceBoard = () => {
 
-    const [records, setRecords] = useState({
-        transactions: []
-    })
+    const initialValueRecords = JSON.parse(localStorage.getItem('transactions')) || { transactions: [] }
+    const [records, setRecords] = useState(initialValueRecords)
     const [modal, setModal] = useState(false);
     const [typeTransaction, setTypeTransaction] = useState()
+
+    useEffect(() => {
+        localStorage.setItem('transactions', JSON.stringify(records))
+    }, [records])
 
     const addRecord = (operation, amount, description, date) => {
         swal( {

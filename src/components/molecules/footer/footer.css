@@ -12,7 +12,8 @@
 
 @media (max-width: 600px) {
     .footer {
-        position: relative;
+        position: unset; 
         margin-top: 2em;
+        width: unset;
     }
   }
