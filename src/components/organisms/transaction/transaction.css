@@ -1,22 +1,17 @@
 .transaction {
-    border: 1px solid #222222;
-    border-radius: 7px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: space-around;
     align-items: center;
     transition: 450ms;
-    width: 95%;
+    width: 100%;
     margin: auto;
 }
 
 .transaction p {
-    width: 25%;
+    width: 20%;
     text-align: center;
     font-weight: 900;
-}
-
-.date {
-    letter-spacing: 0.1em;
 }
  
 .btn {
@@ -24,11 +19,24 @@
     background-color: transparent;
     border: none;
     font-size: large;
-    color: #fff;
+    color: rgba(0, 0, 0, 0.54);
     height: 30px;
     margin-left: 1em;
+    cursor: pointer;
+}
+
+.buttons-content {
+    width: 20%;
+    text-align: center;
 }
 
 .btn:hover {
     color: #292929;
 }
+
+@media (max-width: 600px) {
+    .transaction p {
+        width: 35%;
+    }
+  }
+  

@@ -37,7 +37,7 @@ const FinanceBoard = () => {
                 }
 
                 setRecords({
-                    transactions: [...records.transactions, newTrans]
+                    transactions: [ newTrans, ...records.transactions ]
                 })
                 swal("Transacción agregada con exito", {icon: 'success'});
             } else {
@@ -99,30 +99,24 @@ const FinanceBoard = () => {
     }
 
     return (
-        <div>
-            { modal && <Form addRecord={ addRecord } typeTransaction={ typeTransaction } setTypeTransaction={ setTypeTransaction } setModal={ setModal } /> }
+        <>
             <Header />
-            <div className = "content-graph-form">
-                <div className="graph">
-                    <h1>Gráficas proximamente...</h1>
+            <div className="content-app">
+                { modal && <Form addRecord={ addRecord } typeTransaction={ typeTransaction } setTypeTransaction={ setTypeTransaction } setModal={ setModal } /> }
+                <Balance records={ records } addIncome={ handleClickAddRevenues } addExpenses= { handleClickAddExpenses } />
+                <div className = "content-graph-form">
+                    <div className="graph">
+                        <h1>Gráficas proximamente...</h1>
+                    </div>
                 </div>
-                <div className="content-buttons">
-                    <Balance records={ records } />
-                    <button className="btn-add-transaction add-revenues" onClick={ handleClickAddRevenues }>
-                        Agregar Ingreso
-                    </button>
-                    <button className="btn-add-transaction add-expenses" onClick={handleClickAddExpenses}>
-                        Agregar Egreso
-                    </button>
-                </div>
+                <Historical
+                    transactions = {records.transactions}
+                    deleteRecord = { deleteRecord }
+                    updateRecord = { updateRecord } 
+                />
             </div>
-            <Historical
-                transactions = {records.transactions}
-                deleteRecord = { deleteRecord }
-                updateRecord = { updateRecord } 
-            />
             <Footer/>
-        </div>
+        </>
     )
 }
 

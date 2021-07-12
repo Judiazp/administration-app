@@ -2,25 +2,27 @@ import React, { useState } from 'react';
 import FormEdit from '../../molecules/forms/editTransacction';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
-import {faEdit} from '@fortawesome/free-solid-svg-icons'
+import {faEdit} from '@fortawesome/free-solid-svg-icons';
+import {faArrowCircleUp} from '@fortawesome/free-solid-svg-icons';
+import {faArrowCircleDown} from '@fortawesome/free-solid-svg-icons';
 
 import './transaction.css';
 
 const Transaction = (props) => {
 
     const { trans, deleteRecord, updateRecord } = props;
-    const { date, amount, description } = trans
+    const { date, amount, description, operation } = trans
     let style;
     
     const [editData, setEditData] = useState(false)
 
-    if (trans.operation === 'Ingreso'){
+    if (operation === 'Ingreso'){
         style = { 
-            background: 'rgb(93,192,97, 0.5)',
+            color: 'rgb(93,192,97)',
         }
     } else {
         style = {
-            background: 'rgb(229,61,47, 0.5)'
+            color: 'rgb(229,61,47)',
         }
     }
 
@@ -34,12 +36,18 @@ const Transaction = (props) => {
 
     return (
         <div >
-            <div className="transaction" style= { style }>
+            <div className="transaction">
+                <p style= { style } > 
+                    { 
+                        operation === 'Ingreso' ? <FontAwesomeIcon icon={faArrowCircleUp} /> 
+                        : <FontAwesomeIcon icon={faArrowCircleDown} />
+                    }
+                </p>
                 <p className="date"> { date } </p>
                 <p name="description">
                     { description }
                 </p>
-                <p name="monto">
+                <p name="monto" style= { style }>
                     { parseFloat(amount).toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) } 
                 </p>
                 <div className="buttons-content">

@@ -1,7 +1,12 @@
 import React from 'react'
 import './balance.css'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faWallet} from '@fortawesome/free-solid-svg-icons';
+// import {faCreditCard} from '@fortawesome/free-solid-svg-icons';
+import {faArrowCircleUp} from '@fortawesome/free-solid-svg-icons';
+import {faArrowCircleDown} from '@fortawesome/free-solid-svg-icons';
 
-export const Balance = ({ records }) => {
+export const Balance = ({ records, addIncome, addExpenses }) => {
 
     const { transactions } = records
     
@@ -18,22 +23,42 @@ export const Balance = ({ records }) => {
 
     return (
         <div className="content-balance">
-            <div className="content-calculation">
-                <div className="balance-calculation">
-                    <h3>Balance</h3>
-                    <h3> { (totalRevenues - totalExpenses).toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) } </h3>
-                </div>
+            <div className="balance-calculation content-item-balance">
+                <p>Saldo actual</p>
+                <h2> 
+                    { (totalRevenues - totalExpenses).toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) } 
+                    <span className="icon"> <FontAwesomeIcon icon={faWallet} /> </span> 
+                </h2>
             </div>
-            <div className="balance">
-                <div className="content-icome content-item-balance">
-                    <h3>Ingresos</h3>
-                    <h3> { totalRevenues.toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) } </h3>
-                </div>
-                <div className="content-expenses content-item-balance">
-                    <h3>Egresos</h3>
-                    <h3> { totalExpenses.toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) } </h3>
-                </div> 
+            <div 
+                className="content-item-balance" 
+                onClick={ addIncome } 
+                title="Agrega un ingreso"
+            >
+                <p>Ingresos</p>
+                <h2> 
+                    { totalRevenues.toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) }
+                    <span className="icon-up"> <FontAwesomeIcon icon={faArrowCircleUp} /> </span>
+                </h2>
             </div>
+            <div 
+                className="content-item-balance" 
+                onClick={ addExpenses } 
+                title="Agrega un gasto"
+            >
+                <p>Gastos</p>
+                <h2> 
+                    { totalExpenses.toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) }
+                    <span className="icon-down"> <FontAwesomeIcon icon={faArrowCircleDown} /> </span>
+                </h2>
+            </div>
+            {/* <div className="content-item-balance">
+                <p>Tarjetas de credito</p>
+                <h2>
+                    { totalExpenses.toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) }
+                    <span className="icon-tdc"> <FontAwesomeIcon icon={ faCreditCard } /> </span> 
+                </h2>
+            </div>  */}
         </div>
     )
 }

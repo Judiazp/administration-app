@@ -1,19 +1,10 @@
 .footer {
-    color: #fff;
+    color: rgba(0, 0, 0, 0.87);
     padding: 10px;
-    background-color: #2A2F32;
+    background-color: #FFFFFF;
     text-align: center;
-    border-top: 2px solid #222222;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     bottom: 0;
     right: 0;
-    width: 100%;
-    position: absolute;
+    position: unset;
 }
-
-@media (max-width: 600px) {
-    .footer {
-        position: unset; 
-        margin-top: 2em;
-        width: unset;
-    }
-  }
