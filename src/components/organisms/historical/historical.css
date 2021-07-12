@@ -1,21 +1,14 @@
 
-.content-history {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-
-}
-
-.transactionHistory {
-    background-color: #292929;
+.transaction-history {
+    background-color: #FFFFFF;
     border-radius: 10px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0, 0.87);
     padding: 20px;
-    width: 90%;
-    color: #fff;
 } 
 
 .content-transaction {
-    max-height: 15vh;
+    max-height: 30vh;
     overflow-y: scroll;
 }
 
@@ -23,7 +16,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 20px;
     border-radius: 5px;
 }
  
@@ -42,7 +34,7 @@
     margin: 20px;
     margin-bottom: 20px;
     padding: 10px;
-
+    cursor: pointer;
 }
 
 .filtros:hover {
@@ -50,7 +42,7 @@
 }
 
 .filtroEgr{
-    background-color: rgb(229,61,47,0.5);
+    background-color: rgb(229,61,40);
 }
 
 .filtroEgr:hover {
@@ -62,16 +54,38 @@
     font-weight: 400;
 }
 
+.content-tab {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    background-color: #F8F8F8;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.content-tab p {
+    text-align: center;
+    width: 20%;
+}
+
 @media (max-width: 600px) {
     .transactionHistory {
         padding: 20px;
         max-height: 100vh;
         width: 90%;
         color: #fff;
-        margin-top: 30px;
     }
 
     .content-filter {
         flex-direction: column;
+        margin-bottom: 0;
+    }
+    
+    .content-transaction {
+        max-height: 30vh;
+    }
+
+    .content-tab p {
+        width: 35%;
     }
 }

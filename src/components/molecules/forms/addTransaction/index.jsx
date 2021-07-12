@@ -11,7 +11,7 @@ const Form = (props) => {
         operation: typeTransaction,
         amount: 0,
         description: '',
-        date: date.toLocaleString()
+        date: date.toLocaleDateString()
     })
 
     const onSubmit = event => {
@@ -36,7 +36,7 @@ const Form = (props) => {
                     className="input" 
                     onChange = { handleInputChange } 
                     step="0.001" 
-                    required 
+                    required
                 />
                 <textarea 
                     name="description" 
@@ -44,6 +44,7 @@ const Form = (props) => {
                     className="description" 
                     onChange={ handleInputChange } 
                     required 
+                    maxlength="10" 
                 />
                 <div className="content-btns">
                     <button className="button" type="submit">Agregar</button>
