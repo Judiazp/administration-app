@@ -4,6 +4,7 @@ import Historical from '../../organisms/historical';
 import swal from 'sweetalert';
 import Header from '../../molecules/header'
 import { Balance } from '../../organisms/balance';
+// import { Graphics } from '../../molecules/graphics';
 import { Footer } from '../../molecules/footer';
 
 import './financeBoard.css'
@@ -104,11 +105,6 @@ const FinanceBoard = () => {
             <div className="content-app">
                 { modal && <Form addRecord={ addRecord } typeTransaction={ typeTransaction } setTypeTransaction={ setTypeTransaction } setModal={ setModal } /> }
                 <Balance records={ records } addIncome={ handleClickAddRevenues } addExpenses= { handleClickAddExpenses } />
-                <div className = "content-graph-form">
-                    <div className="graph">
-                        <h1>Gráficas proximamente...</h1>
-                    </div>
-                </div>
                 <Historical
                     transactions = {records.transactions}
                     deleteRecord = { deleteRecord }

@@ -2,35 +2,6 @@
     padding: 4em;
 }
 
-.content-graph-form   {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    margin-bottom: 50px;
-    justify-content: center;
-    height: 40%;
-}
-
-.graph {
-    animation: animateFondo 2s infinite linear;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 20px;
-    text-align: center;
-    height: 40vh;
-    background: linear-gradient(to right, rgb(229,61,47, 0.5), rgb(93,192,97, 0.5));
-    border-radius: 10px;
-    font-size: 2em;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
-}
-
-@keyframes animateFondo{
-    0%{background-position: left; background-color: rgb(229,61,47, 0.5);} 
-    80%{background-position: right; background-color: rgb(93,192,97, 0.5);}
-}
-
 .content-buttons {
     width: 30%;
     display: flex;
