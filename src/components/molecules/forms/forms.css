@@ -83,6 +83,27 @@
     background-color: rgb(229,61,47);
 }
 
+/*-------------------------------- checkbox -----------------------------------*/
+
+.content-checkbox {
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px 0 20px 0;
+}
+
+.checkbox {
+    display: flex;
+}
+
+.checkbox button {
+    margin: 0 10px 0 10px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+}
+
 @media (max-width: 600px) {
     .form {
         width: 70%;

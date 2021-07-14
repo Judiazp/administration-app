@@ -24,9 +24,9 @@
     justify-content: center;
 }
 
-.filtros {
+.filters {
     padding: 5px;
-    background-color: #348637;
+    background-color: #2196F3;
     outline: none;
     border-radius: 10px;
     border: none;
@@ -37,16 +37,32 @@
     cursor: pointer;
 }
 
-.filtros:hover {
+.filters:hover {
+    background-color: #0B7AD5;
+}
+
+.filter-revenues {
     background-color: #2ea043;
 }
 
-.filtroEgr{
-    background-color: rgb(229,61,40);
+.filter-revenues:hover {
+    background-color: #348637;
 }
 
-.filtroEgr:hover {
+.filter-expenses{
     background-color: rgb(229,61,47);
+}
+
+.filter-expenses:hover {
+    background-color: #DA2B1B;
+}
+
+.filter-debts {
+    background-color: #00796B;
+}
+
+.filter-debts:hover {
+    background-color: #005248;
 }
 
 .title {
