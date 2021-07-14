@@ -5,13 +5,14 @@ import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {faEdit} from '@fortawesome/free-solid-svg-icons';
 import {faArrowCircleUp} from '@fortawesome/free-solid-svg-icons';
 import {faArrowCircleDown} from '@fortawesome/free-solid-svg-icons';
+import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 
 import './transaction.css';
 
 const Transaction = (props) => {
 
     const { trans, deleteRecord, updateRecord } = props;
-    const { date, amount, description, operation } = trans
+    const { date, amount, description, operation, stateDebts } = trans
     let style;
     
     const [editData, setEditData] = useState(false)
@@ -20,9 +21,23 @@ const Transaction = (props) => {
         style = { 
             color: 'rgb(93,192,97)',
         }
-    } else {
+    } 
+    
+    if (operation === 'Gasto') {
         style = {
             color: 'rgb(229,61,47)',
+        }
+    }
+
+    if (operation === 'Deuda') {
+        if (stateDebts === 'paid') {
+            style = {
+                color: '#005248',
+            }
+        } else {
+            style = {
+                color: 'rgb(229,61,47)',
+            }
         }
     }
 
@@ -36,14 +51,15 @@ const Transaction = (props) => {
 
     return (
         <div >
-            <div className="transaction">
-                <p style= { style } > 
-                    { 
-                        operation === 'Ingreso' ? <FontAwesomeIcon icon={faArrowCircleUp} /> 
-                        : <FontAwesomeIcon icon={faArrowCircleDown} />
-                    }
+            <div className="transaction" title={ stateDebts === 'notPayed' && 'Pendiente' }>
+                <p style= { style }> 
+                    { operation === 'Ingreso' && <FontAwesomeIcon icon={faArrowCircleUp} /> }
+                    { operation === 'Gasto' && <FontAwesomeIcon icon={faArrowCircleDown} /> }
+                    { operation === 'Deuda' && <FontAwesomeIcon icon={faCreditCard} />  }
                 </p>
-                <p className="date"> { date } </p>
+                <p className="date">
+                    { date } 
+                </p>
                 <p name="description">
                     { description }
                 </p>

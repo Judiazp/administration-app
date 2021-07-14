@@ -1,13 +1,13 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
-export const Graphics = ({ income, expenses }) => {
+export const Graphics = ({ income, expenses, debts }) => {
     const data = {
-        labels: [ 'Ingresos', 'Gastos'],
+        labels: [ 'Ingresos', 'Gastos', 'Deudas'],
         datasets: [
             {
                 label: 'Saldo',
-                data: [income, expenses],
+                data: [income, expenses, debts],
                 backgroundColor: [
                     '#2ea043',
                     'rgb(229,61,47)',

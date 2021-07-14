@@ -12,6 +12,8 @@ import './financeBoard.css'
 const FinanceBoard = () => {
 
     const initialValueRecords = JSON.parse(localStorage.getItem('transactions')) || { transactions: [] }
+
+
     const [records, setRecords] = useState(initialValueRecords)
     const [modal, setModal] = useState(false);
     const [typeTransaction, setTypeTransaction] = useState()
@@ -20,26 +22,33 @@ const FinanceBoard = () => {
         localStorage.setItem('transactions', JSON.stringify(records))
     }, [records])
 
-    const addRecord = (operation, amount, description, date) => {
+    const addRecord = (operation, amount, description, stateDebts, date) => {
         swal( {
-            title: `Agregando transacción`,
+            title: `Agregando ${operation}`,
             text: '¿Seguro que quiere agregar esta transacción?',
             icon: 'warning',
             buttons: ['Cancelar', 'Confirmar'],
             dangerMode: true
-        }).then((willDelete) => {
-            if (willDelete) {
+        }).then((addTransaction) => {
+            if (addTransaction) {
                 const newTrans = {
                     operation: operation,
                     amount: amount, 
                     description: description,
+                    stateDebts: stateDebts,
                     date: date,
                     id: records.transactions.length
                 }
 
-                setRecords({
-                    transactions: [ newTrans, ...records.transactions ]
-                })
+                // if (newTrans.operation === 'Deuda' && newTrans.stateDebts === 'notPayed' ) {
+                //     setDebts({ debtHistory: [ newTrans, ...debts.debtHistory ] })
+                //     console.log(debts);
+                // } else {
+                    setRecords({
+                        transactions: [ newTrans, ...records.transactions ]
+                    })
+                // }
+
                 swal("Transacción agregada con exito", {icon: 'success'});
             } else {
                 swal('Operación cancelada', {icon: 'error'})
@@ -65,15 +74,15 @@ const FinanceBoard = () => {
         })
     }
 
-    const updateRecord = (id, amount, description) => {
+    const updateRecord = (id, operation, amount, description) => {
         swal( {
-            title: `Actualizando transacción`,
+            title: `Actualizando ${operation}`,
             text: '¿Seguro que quiere actualizar esta transacción?',
             icon: 'warning',
             buttons: ['Cancelar', 'Confirmar'],
             dangerMode: true
-        }).then((willDelete) => {
-            if (willDelete) {
+        }).then((update) => {
+            if (update) {
                 const newTransaction = records.transactions.map( trans => {
                     if(trans.id === id) {
                         trans.amount = amount
@@ -89,13 +98,8 @@ const FinanceBoard = () => {
         })
     }
 
-    const handleClickAddRevenues = () => {
-        setTypeTransaction('Ingreso')
-        setModal(true)
-    }
-
-    const handleClickAddExpenses = () => {
-        setTypeTransaction('Egreso')
+    const handleClickAddTransaction = (typeTransaction) => {
+        setTypeTransaction(typeTransaction)
         setModal(true)
     }
 
@@ -104,11 +108,14 @@ const FinanceBoard = () => {
             <Header />
             <div className="content-app">
                 { modal && <Form addRecord={ addRecord } typeTransaction={ typeTransaction } setTypeTransaction={ setTypeTransaction } setModal={ setModal } /> }
-                <Balance records={ records } addIncome={ handleClickAddRevenues } addExpenses= { handleClickAddExpenses } />
+                <Balance 
+                    records={ records } 
+                    addTransaction={ handleClickAddTransaction } 
+                />
                 <Historical
-                    transactions = {records.transactions}
-                    deleteRecord = { deleteRecord }
-                    updateRecord = { updateRecord } 
+                    transactions={records.transactions}
+                    deleteRecord={ deleteRecord }
+                    updateRecord={ updateRecord }
                 />
             </div>
             <Footer/>

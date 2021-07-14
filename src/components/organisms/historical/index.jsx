@@ -5,18 +5,17 @@ import './historical.css';
 
 const TransactionHistory = ({ transactions, deleteRecord, updateRecord }) =>  {
 
-    const [filtros, setFiltros] = useState('everyone')
-    const revenues = transactions.filter(({operation}) => operation === 'Ingreso')
-    const expenses = transactions.filter(({operation}) => operation === 'Egreso')
+    const [filters, setFilters] = useState('everyone')
 
-    const handleClick = (e) => {
-        if (e.target.name === 'revenues') {
-            setFiltros('revenues')
-        } else if (e.target.name === 'expenses') {
-            setFiltros('expenses')
-        } else {
-            setFiltros('everyone')
-        }
+    const revenues = transactions.filter(({operation}) => operation === 'Ingreso')
+    const expenses = transactions.filter(({operation}) => operation === 'Gasto')
+    const debtHistory = transactions.filter(({operation}) => operation === 'Deuda')
+
+
+    const handleFilterClick = (e, filter) => {
+        if (e.target.name === filter) {
+            setFilters(filter)
+        } 
     }
 
     return (
@@ -24,10 +23,34 @@ const TransactionHistory = ({ transactions, deleteRecord, updateRecord }) =>  {
             <div className="content-filter">
                 <h2 className='title'>Historial de Transacciones</h2>
                 <article className='btns'>
-                    <button className='filtros' name="revenues" onClick={ (e) => handleClick(e) }>Ingresos</button>
-                    <button className='filtroEgr filtros' name='expenses' onClick={ (e) => handleClick(e) }>Gastos</button>
-                    {/* <button className='filtroEgr filtros' name='expenses' onClick={ (e) => handleClick(e) }>Créditos</button> */}
-                    <button className='filtros' name='everyone' onClick={ (e) => handleClick(e) }>Todos</button>
+                    <button 
+                        className='filter-revenues filters' 
+                        name="revenues" 
+                        onClick={ (e) => handleFilterClick(e, 'revenues') }
+                    >
+                        Ingresos
+                    </button>
+                    <button 
+                        className='filter-expenses filters'
+                        name='expenses' 
+                        onClick={ (e) => handleFilterClick(e, 'expenses') }
+                    >
+                        Gastos
+                    </button>
+                    <button 
+                        className='filter-debts filters' 
+                        name='debts' 
+                        onClick={ (e) => handleFilterClick(e, 'debts') }
+                    >
+                        Deudas
+                    </button>
+                    <button 
+                        className='filters' 
+                        name='everyone' 
+                        onClick={ (e) => handleFilterClick(e, 'everyone') }
+                    >
+                        Todos
+                    </button>
                 </article>
             </div>
             <div className="content-tab">
@@ -39,26 +62,22 @@ const TransactionHistory = ({ transactions, deleteRecord, updateRecord }) =>  {
             </div>
             <div className="content-transaction">
                 { 
-                    (filtros === 'everyone') && (
-                        transactions.map(transaction => 
-                            <Transaction
-                            trans = { transaction }
-                            key={transaction.id}
-                            deleteRecord = { deleteRecord }
-                            updateRecord = { updateRecord }
-                            />
+                    (filters === 'everyone') && (
+                        (transactions.length === 0) ? <NoRecords/> : (
+                            transactions.map(transaction => 
+                                <Transaction
+                                trans = { transaction }
+                                key={transaction.id}
+                                deleteRecord = { deleteRecord }
+                                updateRecord = { updateRecord }
+                                />
+                            )
                         )
-                    )
-                }
-
-                {
-                    (transactions.length === 0) && (
-                        <NoRecords/>
                     )
                 }
                 
                 {
-                    (filtros === 'revenues') && (
+                    (filters === 'revenues') && (
                         (revenues.length === 0) ?  <NoRecords/> : (
                             revenues.map(transaction => 
                                 <Transaction
@@ -71,8 +90,9 @@ const TransactionHistory = ({ transactions, deleteRecord, updateRecord }) =>  {
                         )
                     )
                 }
+
                 {
-                    (filtros === 'expenses') && (
+                    (filters === 'expenses') && (
                         (expenses.length === 0) ? <NoRecords/> : (
                             expenses.map(transaction => 
                                 <Transaction
@@ -85,6 +105,21 @@ const TransactionHistory = ({ transactions, deleteRecord, updateRecord }) =>  {
                         )
                     )
                 }
+                {
+                    (filters === 'debts') && (
+                        (debtHistory.length === 0) ? <NoRecords/> : (
+                            debtHistory.map(transaction => 
+                                <Transaction
+                                    trans = { transaction }
+                                    key={transaction.id}
+                                    deleteRecord = { deleteRecord }
+                                    updateRecord = { updateRecord }
+                                />
+                            )
+                        )
+                    )
+                }
+
             </div>
         </div>
     )
