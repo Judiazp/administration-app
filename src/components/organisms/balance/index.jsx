@@ -16,15 +16,15 @@ export const Balance = ({ records, addTransaction }) => {
     let totalDebts = 0;
     let totalDebtsPaid = 0;
    
-    transactions.filter(({ operation }) => operation === 'Ingreso').forEach(({ amount }) => {
+    transactions.filter(({ operation }) => operation === 'revenues').forEach(({ amount }) => {
         totalRevenues += parseFloat(amount)
     });
 
-    transactions.filter(({operation}) => operation === 'Gasto').forEach(({ amount }) => {
+    transactions.filter(({operation}) => operation === 'expenses').forEach(({ amount }) => {
         totalExpenses += parseFloat(amount)
     })
 
-    transactions.filter(({operation}) => operation === 'Deuda').forEach(({ amount }) => {
+    transactions.filter(({operation}) => operation === 'debts').forEach(({ amount }) => {
         totalDebts += parseFloat(amount)
     })
 
@@ -44,7 +44,7 @@ export const Balance = ({ records, addTransaction }) => {
                 </div>
                 <div 
                     className="content-item-balance" 
-                    onClick={ () => addTransaction('Ingreso') } 
+                    onClick={ () => addTransaction('revenues') } 
                     title="Agrega un ingreso"
                 >
                     <p>Ingresos</p>
@@ -55,7 +55,7 @@ export const Balance = ({ records, addTransaction }) => {
                 </div>
                 <div 
                     className="content-item-balance" 
-                    onClick={ () => addTransaction('Gasto') } 
+                    onClick={ () => addTransaction('expenses') } 
                     title="Agrega un gasto"
                 >
                     <p>Gastos</p>
@@ -66,7 +66,7 @@ export const Balance = ({ records, addTransaction }) => {
                 </div>
                 <div 
                     className="content-item-balance" 
-                    onClick={ () => addTransaction('Deuda') }
+                    onClick={ () => addTransaction('debts') }
                 >
                     <p>Deudas</p>
                     <h2>

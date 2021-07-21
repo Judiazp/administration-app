@@ -52,21 +52,8 @@ const FormEdit = ({ transaction, update, setEditData }) => {
                 />
 
                 {
-                    transaction.operation === 'Deuda' && (
+                    transaction.operation === 'debts' && (
                         <div className="content-checkbox">
-                            {/* <label 
-                                className="checkbox"
-                            >
-                                <input 
-                                    type="checkbox"
-                                    name="stateDebts"
-                                    value="notPayed"
-                                    onChange={ handleInputChange }
-                                    disabled={ stateDebts === 'paid' ? true : false }
-                                    required={ stateDebts === 'paid' ? true : false } 
-                                />
-                                Pendiente
-                            </label> */}
                             <label 
                                 className="checkbox" 
                             >
