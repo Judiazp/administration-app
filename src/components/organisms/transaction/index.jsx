@@ -51,7 +51,7 @@ const Transaction = (props) => {
 
     return (
         <div >
-            <div className="transaction" title={ stateDebts === 'notPayed' && 'Pendiente' }>
+            <div className="transaction" title={ stateDebts === 'notPayed' ? 'Pendiente' : 'Pagada' }>
                 <p style= { style }> 
                     { operation === 'Ingreso' && <FontAwesomeIcon icon={faArrowCircleUp} /> }
                     { operation === 'Gasto' && <FontAwesomeIcon icon={faArrowCircleDown} /> }
@@ -76,12 +76,13 @@ const Transaction = (props) => {
                 </div>
             </div>
             { 
-                editData && 
+                editData && (
                     <FormEdit 
                         update={ updateRecord } 
                         transaction={ trans } 
                         setEditData={ setEditData }
                     />
+                )
             }
         </div>
     )
