@@ -17,19 +17,19 @@ const Transaction = (props) => {
     
     const [editData, setEditData] = useState(false)
 
-    if (operation === 'Ingreso'){
+    if (operation === 'revenues'){
         style = { 
             color: 'rgb(93,192,97)',
         }
     } 
     
-    if (operation === 'Gasto') {
+    if (operation === 'expenses') {
         style = {
             color: 'rgb(229,61,47)',
         }
     }
 
-    if (operation === 'Deuda') {
+    if (operation === 'debts') {
         if (stateDebts === 'paid') {
             style = {
                 color: '#005248',
@@ -53,9 +53,9 @@ const Transaction = (props) => {
         <div >
             <div className="transaction" title={ stateDebts === 'notPayed' ? 'Pendiente' : 'Pagada' }>
                 <p style= { style }> 
-                    { operation === 'Ingreso' && <FontAwesomeIcon icon={faArrowCircleUp} /> }
-                    { operation === 'Gasto' && <FontAwesomeIcon icon={faArrowCircleDown} /> }
-                    { operation === 'Deuda' && <FontAwesomeIcon icon={faCreditCard} />  }
+                    { operation === 'revenues' && <FontAwesomeIcon icon={faArrowCircleUp} /> }
+                    { operation === 'expenses' && <FontAwesomeIcon icon={faArrowCircleDown} /> }
+                    { operation === 'debts' && <FontAwesomeIcon icon={faCreditCard} />  }
                 </p>
                 <p className="date">
                     { date } 

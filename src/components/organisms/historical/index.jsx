@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
-import Transaction from '../transaction';
-import { NoRecords } from '../../atoms/noRecords';
+import { FilteredTransactions } from '../filteredTransactions';
 import './historical.css';
 
 const TransactionHistory = ({ transactions, deleteRecord, updateRecord }) =>  {
 
     const [filters, setFilters] = useState('everyone')
-
-    const revenues = transactions.filter(({operation}) => operation === 'Ingreso')
-    const expenses = transactions.filter(({operation}) => operation === 'Gasto')
-    const debtHistory = transactions.filter(({operation}) => operation === 'Deuda')
-
 
     const handleFilterClick = (e, filter) => {
         if (e.target.name === filter) {
@@ -60,67 +54,12 @@ const TransactionHistory = ({ transactions, deleteRecord, updateRecord }) =>  {
                 <p>Valor</p>
                 <p>Edicion</p>
             </div>
-            <div className="content-transaction">
-                { 
-                    (filters === 'everyone') && (
-                        (transactions.length === 0) ? <NoRecords/> : (
-                            transactions.map(transaction => 
-                                <Transaction
-                                trans = { transaction }
-                                key={transaction.id}
-                                deleteRecord = { deleteRecord }
-                                updateRecord = { updateRecord }
-                                />
-                            )
-                        )
-                    )
-                }
-                
-                {
-                    (filters === 'revenues') && (
-                        (revenues.length === 0) ?  <NoRecords/> : (
-                            revenues.map(transaction => 
-                                <Transaction
-                                    trans = { transaction }
-                                    key={transaction.id}
-                                    deleteRecord = { deleteRecord }
-                                    updateRecord = { updateRecord }
-                                />
-                            )
-                        )
-                    )
-                }
-
-                {
-                    (filters === 'expenses') && (
-                        (expenses.length === 0) ? <NoRecords/> : (
-                            expenses.map(transaction => 
-                                <Transaction
-                                    trans = { transaction }
-                                    key={transaction.id}
-                                    deleteRecord = { deleteRecord }
-                                    updateRecord = { updateRecord }
-                                />
-                            )
-                        )
-                    )
-                }
-                {
-                    (filters === 'debts') && (
-                        (debtHistory.length === 0) ? <NoRecords/> : (
-                            debtHistory.map(transaction => 
-                                <Transaction
-                                    trans = { transaction }
-                                    key={transaction.id}
-                                    deleteRecord = { deleteRecord }
-                                    updateRecord = { updateRecord }
-                                />
-                            )
-                        )
-                    )
-                }
-
-            </div>
+            <FilteredTransactions 
+                filters={ filters } 
+                transactions={ transactions }
+                deleteRecord = { deleteRecord }
+                updateRecord = { updateRecord } 
+            />
         </div>
     )
 }

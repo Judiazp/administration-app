@@ -50,40 +50,6 @@ const Form = (props) => {
                     autoComplete="off"
                     maxlength="20" 
                 />
-
-                {/* {
-                    typeTransaction === 'Deuda' && (
-                        <div className="content-checkbox">
-                            <label 
-                                className="checkbox"
-                            >
-                                <input 
-                                    type="checkbox"
-                                    name="stateDebts"
-                                    value="notPayed"
-                                    onChange={ handleInputChange }
-                                    disabled={ data.stateDebts === 'paid' ? true : false }
-                                    required={ data.stateDebts === 'paid' ? true : false } 
-                                />
-                                Pendiente
-                            </label>
-                            <label 
-                                className="checkbox" 
-                            >
-                                <input 
-                                    type="checkbox" 
-                                    name="stateDebts"
-                                    value="paid"
-                                    onChange={ handleInputChange }
-                                    disabled={ data.stateDebts === 'notPayed' ? true : false }
-                                    required={ data.stateDebts === 'notPayed' ? true : false } 
-                                />
-                                Pagada
-                            </label>
-                        </div>
-                    )
-                } */}
-
                 <div className="content-btns">
                     <button className="button" type="submit">Agregar</button>
                     <button className="button btn-cancel" onClick={ handleClickCancel }>Cancelar</button>
