@@ -10,21 +10,26 @@ import './balance.css';
 export const Balance = ({ records, addTransaction }) => {
 
     const { transactions } = records
-    
+
     let totalRevenues = 0;
     let totalExpenses = 0;
     let totalDebts = 0;
-
-    transactions.filter(({ operation }) => operation === 'Ingreso').forEach(({ amount }) => {
+    let totalDebtsPaid = 0;
+   
+    transactions.filter(({ operation }) => operation === 'Ingreso').map(({ amount }) => {
         totalRevenues += parseFloat(amount)
     });
 
-    transactions.filter(({operation}) => operation === 'Gasto').forEach(({ amount }) => {
+    transactions.filter(({operation}) => operation === 'Gasto').map(({ amount }) => {
         totalExpenses += parseFloat(amount)
     })
 
-    transactions.filter(({operation}) => operation === 'Deuda').forEach(({ amount }) => {
+    transactions.filter(({operation}) => operation === 'Deuda').map(({ amount }) => {
         totalDebts += parseFloat(amount)
+    })
+
+    transactions.filter(({stateDebts}) => stateDebts === 'paid').map(({ amount }) => {
+        totalDebtsPaid += parseFloat(amount)
     })
 
     return (
@@ -33,7 +38,7 @@ export const Balance = ({ records, addTransaction }) => {
                 <div className="content-item-balance">
                     <p>Saldo actual</p>
                     <h2> 
-                        { (totalRevenues - totalExpenses).toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) } 
+                        { (totalRevenues - totalExpenses - totalDebtsPaid).toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) } 
                         <span className="icon"> <FontAwesomeIcon icon={faWallet} /> </span> 
                     </h2>
                 </div>
@@ -55,7 +60,7 @@ export const Balance = ({ records, addTransaction }) => {
                 >
                     <p>Gastos</p>
                     <h2> 
-                        { totalExpenses.toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) }
+                        { (totalExpenses + totalDebtsPaid ).toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) }
                         <span className="icon-down"> <FontAwesomeIcon icon={faArrowCircleDown} /> </span>
                     </h2>
                 </div>
@@ -65,14 +70,14 @@ export const Balance = ({ records, addTransaction }) => {
                 >
                     <p>Deudas</p>
                     <h2>
-                        { totalDebts.toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) }
+                        { (totalDebts - totalDebtsPaid).toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) }
                         <span className="icon-tdc"> <FontAwesomeIcon icon={ faCreditCard } /> </span> 
                     </h2>
                 </div> 
             </div>
             <div className = "content-graph-form">
                 <div className="graph">
-                    <Graphics income={ totalRevenues } expenses={ totalExpenses } debts={ totalDebts } />
+                    <Graphics income={ totalRevenues } expenses={ totalExpenses } debts={ totalDebts } debtsPaid={ totalDebtsPaid } />
                 </div>
             </div>
         </>

@@ -11,7 +11,7 @@ const Form = (props) => {
         operation: typeTransaction,
         amount: 0,
         description: '',
-        stateDebts: '',
+        stateDebts: 'notPayed',
         date: date.toLocaleDateString()
     })
 
@@ -47,7 +47,8 @@ const Form = (props) => {
                     className="description" 
                     onChange={ handleInputChange } 
                     required 
-                    maxlength="15" 
+                    autoComplete="off"
+                    maxlength="20" 
                 />
 
                 {/* {

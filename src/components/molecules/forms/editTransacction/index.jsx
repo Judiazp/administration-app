@@ -7,13 +7,13 @@ const FormEdit = ({ transaction, update, setEditData }) => {
     const [formEditData, handleInputChange] = useForm({
         amount: transaction.amount,
         description: transaction.description,
-        stateDebts: ''
+        stateDebts: transaction.stateDebts
     })
 
-    console.log(transaction.stateDebts);
-
+    
     const { amount, description, stateDebts } = formEditData
-
+    console.log(stateDebts);
+    
     const handleSubmit = (e) => {
         e.preventDefault()
         update( transaction.id, transaction.operation, amount, description, stateDebts )
@@ -47,6 +47,7 @@ const FormEdit = ({ transaction, update, setEditData }) => {
                     onChange={ handleInputChange }
                     name="description"
                     value={ description }
+                    autoCorrect="off"
                     required
                 />
 
@@ -72,12 +73,11 @@ const FormEdit = ({ transaction, update, setEditData }) => {
                                 <input 
                                     type="checkbox" 
                                     name="stateDebts"
-                                    value="paid"
+                                    value='paid'
+                                    checked={ stateDebts === 'notPayed' ? false : true }
                                     onChange={ handleInputChange }
-                                    disabled={ stateDebts === 'notPayed' ? true : false }
-                                    required={ stateDebts === 'notPayed' ? true : false } 
                                 />
-                                Pagada
+                                Pago realizado
                             </label>
                         </div>
                     )

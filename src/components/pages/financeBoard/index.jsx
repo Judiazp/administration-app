@@ -4,7 +4,6 @@ import Historical from '../../organisms/historical';
 import swal from 'sweetalert';
 import Header from '../../molecules/header'
 import { Balance } from '../../organisms/balance';
-// import { Graphics } from '../../molecules/graphics';
 import { Footer } from '../../molecules/footer';
 
 import './financeBoard.css'
@@ -12,8 +11,6 @@ import './financeBoard.css'
 const FinanceBoard = () => {
 
     const initialValueRecords = JSON.parse(localStorage.getItem('transactions')) || { transactions: [] }
-
-
     const [records, setRecords] = useState(initialValueRecords)
     const [modal, setModal] = useState(false);
     const [typeTransaction, setTypeTransaction] = useState()
@@ -40,14 +37,9 @@ const FinanceBoard = () => {
                     id: records.transactions.length
                 }
 
-                // if (newTrans.operation === 'Deuda' && newTrans.stateDebts === 'notPayed' ) {
-                //     setDebts({ debtHistory: [ newTrans, ...debts.debtHistory ] })
-                //     console.log(debts);
-                // } else {
-                    setRecords({
-                        transactions: [ newTrans, ...records.transactions ]
-                    })
-                // }
+                setRecords({
+                    transactions: [ newTrans, ...records.transactions ]
+                })
 
                 swal("Transacción agregada con exito", {icon: 'success'});
             } else {
@@ -74,10 +66,13 @@ const FinanceBoard = () => {
         })
     }
 
-    const updateRecord = (id, operation, amount, description) => {
+    const updateRecord = (id, operation, amount, description, stateDebts) => {
+
         swal( {
             title: `Actualizando ${operation}`,
-            text: '¿Seguro que quiere actualizar esta transacción?',
+            text: (operation === 'Deuda' && stateDebts === 'paid') ? (
+                'Al confirmar el pago, no podrá modificar nuevamente el estado de la deuda. ¿Seguro que quiere continuar?' 
+                ) : '¿Seguro que quiere actualizar esta transacción?',
             icon: 'warning',
             buttons: ['Cancelar', 'Confirmar'],
             dangerMode: true
@@ -87,7 +82,9 @@ const FinanceBoard = () => {
                     if(trans.id === id) {
                         trans.amount = amount
                         trans.description = description
+                        trans.stateDebts = stateDebts
                     }
+                    console.log(trans);
                     return trans;
                 })
                 setRecords({transactions: newTransaction})
