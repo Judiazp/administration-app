@@ -22,16 +22,14 @@ const Form = (props) => {
         setModal(false)
     }
 
-    console.log(data.stateDebts);
-
     const handleClickCancel = () => {
         setModal(false)
     }
 
     return (
         <div className="content-form">
-            <form className="form" onSubmit={ onSubmit } >
-                <h2> Agregar { typeTransaction } </h2>
+            <form className="form-modal" onSubmit={ onSubmit } >
+                <h2 className="title-form"> Agregar { typeTransaction } </h2>
                 <input 
                     type="number" 
                     name="amount" 
@@ -44,15 +42,15 @@ const Form = (props) => {
                 <input 
                     name="description" 
                     placeholder="Alquiler, mercado..." 
-                    className="description" 
+                    className="input" 
                     onChange={ handleInputChange } 
                     required 
                     autoComplete="off"
                     maxlength="20" 
                 />
                 <div className="content-btns">
-                    <button className="button" type="submit">Agregar</button>
-                    <button className="button btn-cancel" onClick={ handleClickCancel }>Cancelar</button>
+                    <button className="btn-init" type="submit">Agregar</button>
+                    <button className="btn-init btn-cancel" onClick={ handleClickCancel }>Cancelar</button>
                 </div>
             </form>
         </div>
