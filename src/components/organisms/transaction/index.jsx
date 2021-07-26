@@ -17,19 +17,19 @@ const Transaction = (props) => {
     
     const [editData, setEditData] = useState(false)
 
-    if (operation === 'revenues'){
+    if (operation === 'ingreso'){
         style = { 
             color: 'rgb(93,192,97)',
         }
     } 
     
-    if (operation === 'expenses') {
+    if (operation === 'gasto') {
         style = {
             color: 'rgb(229,61,47)',
         }
     }
 
-    if (operation === 'debts') {
+    if (operation === 'deuda') {
         if (stateDebts === 'paid') {
             style = {
                 color: '#005248',
@@ -53,9 +53,9 @@ const Transaction = (props) => {
         <div >
             <div className="transaction" title={ stateDebts === 'notPayed' ? 'Pendiente' : 'Pagada' }>
                 <p style= { style }> 
-                    { operation === 'revenues' && <FontAwesomeIcon icon={faArrowCircleUp} /> }
-                    { operation === 'expenses' && <FontAwesomeIcon icon={faArrowCircleDown} /> }
-                    { operation === 'debts' && <FontAwesomeIcon icon={faCreditCard} />  }
+                    { operation === 'ingreso' && <FontAwesomeIcon icon={faArrowCircleUp} /> }
+                    { operation === 'gasto' && <FontAwesomeIcon icon={faArrowCircleDown} /> }
+                    { operation === 'deuda' && <FontAwesomeIcon icon={faCreditCard} />  }
                 </p>
                 <p className="date">
                     { date } 
@@ -68,10 +68,12 @@ const Transaction = (props) => {
                 </p>
                 <div className="buttons-content">
                     <button className='btn' title="Editar" onClick={ handleClickEdit }>
-                        <FontAwesomeIcon icon={faEdit} />
+                        <FontAwesomeIcon icon={faEdit} /> 
+                        <p>Editar</p>
                     </button>
                     <button className='btn' title="Eliminar" onClick={ handleClickDelete }>
-                        <FontAwesomeIcon icon={faTrashAlt} />
+                        <FontAwesomeIcon icon={faTrashAlt} /> 
+                        <p>Eliminar</p> 
                     </button>
                 </div>
             </div>
