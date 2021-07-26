@@ -26,8 +26,8 @@ const FormEdit = ({ transaction, update, setEditData }) => {
 
     return( 
         <div className="content-form">
-            <form className="form" onSubmit={ handleSubmit }>
-                <h2>
+            <form className="form-modal" onSubmit={ handleSubmit }>
+                <h2 className="title-form">
                     Editar { transaction.operation }
                 </h2>
                 <input 
@@ -58,7 +58,7 @@ const FormEdit = ({ transaction, update, setEditData }) => {
                                 className="checkbox" 
                             >
                                 <input 
-                                    type="checkbox" 
+                                    type="checkbox"
                                     name="stateDebts"
                                     value='paid'
                                     checked={ stateDebts === 'notPayed' ? false : true }
@@ -71,8 +71,8 @@ const FormEdit = ({ transaction, update, setEditData }) => {
                 }
 
                 <div className="content-btns">
-                    <button className="button" type='submit' >Confirmar</button>
-                    <button className="button btn-cancel" onClick={ handleClickCancel } >Cancelar</button>
+                    <button className="btn-init" type='submit' >Confirmar</button>
+                    <button className="btn-init btn-cancel" onClick={ handleClickCancel } >Cancelar</button>
                 </div>
             </form>
         </div>

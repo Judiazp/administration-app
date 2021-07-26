@@ -1,3 +1,6 @@
+
+/*------------------------------- Estilos de los formularios en ventanas modales ---------------------------- */
+
 .content-form {
     background-color: rgba(14, 12, 12, 0.6);
     width: 100%;
@@ -8,51 +11,19 @@
     overflow-y: hidden;
 }
 
-.form {
+.form-modal {
     display: flex;
     flex-direction: column;
     width: 20%;
     padding: 2em;
     border-radius: 7px;
-    background-color: rgb(34,34,34);
-    border: 2px solid rgb(41,41,41);
+    background-color: #FFFFFF;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
     max-height: 300px;
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.form h2 {
-    color: #fff;
-    text-align: center;
-    margin-bottom: 1em;
-}
-
-.input {
-    border: 0.5px solid gray;
-    padding: 10px; 
-    border-radius: 5px;
-    outline: none;
-    background-color: rgb(33,38,45);
-    transition: 350ms;
-    color: rgba(255, 255, 255, 0.425);
-    margin-bottom: 10px;
-}
-
-.description {
-    padding: 10px 10px 40px 10px;
-    border-radius: 5px;
-    outline: none;
-    margin-bottom: 10px;
-    border: 0.5px solid gray;
-    background-color: rgb(33,38,45);
-    transition: 200ms;
-    color: rgba(255, 255, 255, 0.425);
-}
-
-.description:hover {
-    transform: scale(1.025);
 }
 
 .content-btns {
@@ -61,33 +32,86 @@
     width: 100%;
 }
 
-.button {
-    padding: 10px;
-    background-color: #348637;
+/* ----------------- Estilos de formularios de login y registro --------------- */
+
+.container__form {
+    background-color: #FFFFFF;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width: 400px;
+}
+
+.title-form {
+    font-weight: 400;
+    font-size: 30px;
+    margin: 10px 0px;
+    text-align: center;
+}
+
+.icon {
+    color: #2196F3;
+}
+
+.input {
+    border: 0.5px solid gray;
+    border-radius: 5px;
+    margin-bottom: 10px;
     outline: none;
+    padding: 10px;
+    margin: 10px;
+    transition: 350ms;
+}
+
+.input:hover {
+    transform: scale(1.025);
+}
+
+.btn-init {
+    background-color: #2196F3;
     border-radius: 10px;
     border: none;
     color: #fff;
+    font-size: 14px;
+    padding: 10px;
+    outline: none;
     width: 40%;
+    margin: auto;
 }
 
-.button:hover {
-    background-color: #2ea043; 
+.btn-init:hover {
+    background-color: #0B7AD5;
+}
+
+.signup {
+    text-align: center;
+}
+
+.signup span {
+    color: #0B7AD5;
+    font-style: italic;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.signup span:hover {
+    text-decoration: underline;
 }
 
 .btn-cancel {
-    background-color: rgb(229,61,47, 0.5);
+    background-color:rgb(229,61,47);
 }
 
 .btn-cancel:hover {
-    background-color: rgb(229,61,47);
+    background-color: #DA2B1B;
 }
 
 /*-------------------------------- checkbox -----------------------------------*/
 
 .content-checkbox {
     display: flex;
-    color: #fff;
     align-items: center;
     justify-content: space-around;
     margin: 10px 0 20px 0;
@@ -97,21 +121,13 @@
     display: flex;
 }
 
-.checkbox button {
-    margin: 0 10px 0 10px;
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-}
-
 @media (max-width: 850px) {
-    .form {
+    .form-modal {
         width: 70%;
         padding: 30px;
         border-radius: 7px;
-        background-color: rgb(34,34,34);
-        border: 2px solid rgb(41,41,41);
         margin: 0px;
         max-height: 300px;
     }
 }
+
