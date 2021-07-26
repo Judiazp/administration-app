@@ -19,21 +19,21 @@ const TransactionHistory = ({ transactions, deleteRecord, updateRecord }) =>  {
                 <article className='btns'>
                     <button 
                         className='filter-revenues filters' 
-                        name="revenues" 
+                        name="ingreso" 
                         onClick={ (e) => handleFilterClick(e, 'ingreso') }
                     >
                         Ingresos
                     </button>
                     <button 
                         className='filter-expenses filters'
-                        name='expenses' 
+                        name='gasto' 
                         onClick={ (e) => handleFilterClick(e, 'gasto') }
                     >
                         Gastos
                     </button>
                     <button 
                         className='filter-debts filters' 
-                        name='debts' 
+                        name='deuda' 
                         onClick={ (e) => handleFilterClick(e, 'deuda') }
                     >
                         Deudas
