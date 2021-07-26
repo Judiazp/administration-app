@@ -52,7 +52,7 @@ const FormEdit = ({ transaction, update, setEditData }) => {
                 />
 
                 {
-                    transaction.operation === 'debts' && (
+                    transaction.operation === 'deuda' && (
                         <div className="content-checkbox">
                             <label 
                                 className="checkbox" 

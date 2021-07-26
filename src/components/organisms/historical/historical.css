@@ -84,13 +84,7 @@
     width: 20%;
 }
 
-@media (max-width: 600px) {
-    .transactionHistory {
-        padding: 20px;
-        max-height: 100vh;
-        width: 90%;
-        color: #fff;
-    }
+@media (max-width: 900px) {
 
     .content-filter {
         flex-direction: column;
@@ -103,5 +97,18 @@
 
     .content-tab p {
         width: 35%;
+    }
+
+}
+
+@media (max-width: 510px) {
+    .content-tab {
+        display: none;
+    }
+    .filters {
+        margin: 10px;
+    }
+    .content-transaction {
+        border-top: 1px solid rgba(0, 0, 0, 0.4);
     }
 }

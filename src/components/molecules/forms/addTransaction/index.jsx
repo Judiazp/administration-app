@@ -31,7 +31,7 @@ const Form = (props) => {
     return (
         <div className="content-form">
             <form className="form" onSubmit={ onSubmit } >
-                <h2> { typeTransaction } </h2>
+                <h2> Agregar { typeTransaction } </h2>
                 <input 
                     type="number" 
                     name="amount" 

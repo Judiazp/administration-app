@@ -18,11 +18,14 @@
     outline: none;
     background-color: transparent;
     border: none;
-    font-size: large;
     color: rgba(0, 0, 0, 0.54);
     height: 30px;
     margin-left: 1em;
     cursor: pointer;
+}
+
+.btn p {
+    display: none;
 }
 
 .buttons-content {
@@ -34,9 +37,28 @@
     color: #292929;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 510px) {
+    .transaction {
+        flex-direction: column;
+    }
+
     .transaction p {
-        width: 35%;
+        margin: 10px;
+    }
+
+    .buttons-content {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px ;
+    }
+
+    .btn {
+        display: flex;
+        align-items: center;
+    }
+
+    .btn p {
+        display: flex;
     }
   }
   
