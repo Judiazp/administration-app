@@ -84,7 +84,6 @@ const FinanceBoard = () => {
                         trans.description = description
                         trans.stateDebts = stateDebts
                     }
-                    console.log(trans);
                     return trans;
                 })
                 setRecords({transactions: newTransaction})

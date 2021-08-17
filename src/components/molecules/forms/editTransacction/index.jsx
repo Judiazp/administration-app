@@ -10,9 +10,7 @@ const FormEdit = ({ transaction, update, setEditData }) => {
         stateDebts: transaction.stateDebts
     })
 
-    
     const { amount, description, stateDebts } = formEditData
-    console.log(stateDebts);
     
     const handleSubmit = (e) => {
         e.preventDefault()
