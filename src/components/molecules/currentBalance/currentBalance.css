@@ -16,7 +16,6 @@
     border-radius: 7px;
     background-color: #FFFFFF;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
-    /* max-height: 300px; */
     position: relative;
     top: 50%;
     left: 50%;
@@ -38,4 +37,23 @@
     justify-content: space-around;
     padding: .5em;
     border-top: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 1410px) {
+    .remainder {
+        width: 40%;
+        padding: 30px;
+        border-radius: 7px;
+        margin: 0px;
+    }
+
+@media (max-width: 850px) {
+    .remainder {
+        width: 70%;
+        padding: 30px;
+        border-radius: 7px;
+        margin: 0px;
+    }
+}
+
 }
