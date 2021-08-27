@@ -67,7 +67,6 @@ const FinanceBoard = () => {
     }
 
     const updateRecord = (id, operation, amount, description, stateDebts) => {
- 
         swal( {
             title: `Actualizando ${operation}`,
             text: (operation === 'deuda' && stateDebts === 'paid') ? (
@@ -94,7 +93,7 @@ const FinanceBoard = () => {
         })
     }
 
-    const handleClickAddTransaction = (typeTransaction, nameTransaction) => {
+    const handleClickAddTransaction = (typeTransaction) => {
         setTypeTransaction(typeTransaction)
         setModal(true)
     }

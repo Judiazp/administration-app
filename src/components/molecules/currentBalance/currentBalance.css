@@ -1,0 +1,41 @@
+.content-remainder {
+    background-color: rgba(14, 12, 12, 0.6);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: hidden;
+}
+
+.remainder {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    padding: 2em;
+    border-radius: 7px;
+    background-color: #FFFFFF;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+    /* max-height: 300px; */
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.remainder h4 {
+    display: flex;
+    justify-content: space-between;
+    margin: 1em;
+}
+
+.current-remainder {
+    text-align: center;
+}
+
+.current-remainder h3 {
+    display: flex;
+    justify-content: space-around;
+    padding: .5em;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+}

@@ -11,7 +11,7 @@ const Form = (props) => {
         operation: typeTransaction,
         amount: 0,
         description: '',
-        stateDebts: 'notPayed',
+        stateDebts: typeTransaction === 'deuda' ? 'notPayed' : typeTransaction,
         date: date.toLocaleDateString()
     })
 
@@ -27,6 +27,7 @@ const Form = (props) => {
     }
 
     return (
+        
         <div className="content-form">
             <form className="form-modal" onSubmit={ onSubmit } >
                 <h2 className="title-form"> Agregar { typeTransaction } </h2>
