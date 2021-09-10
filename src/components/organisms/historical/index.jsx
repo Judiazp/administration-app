@@ -33,17 +33,17 @@ const TransactionHistory = ({ transactions, deleteRecord, updateRecord }) =>  {
                     </button>
                     <button 
                         className='filter-debts filters' 
-                        name='deuda' 
-                        onClick={ (e) => handleFilterClick(e, 'deuda') }
+                        name='notPayed' 
+                        onClick={ (e) => handleFilterClick(e, 'notPayed') }
                     >
                         Deudas
                     </button>
                     <button 
                         className='filter-debts filters' 
-                        name='notPayed' 
-                        onClick={ (e) => handleFilterClick(e, 'notPayed') }
+                        name='paid' 
+                        onClick={ (e) => handleFilterClick(e, 'paid') }
                     >
-                        Deudas pendientes
+                        Deudas pagadas
                     </button>
                     <button 
                         className='filters' 
