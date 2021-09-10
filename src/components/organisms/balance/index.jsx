@@ -39,8 +39,6 @@ export const Balance = ({ records, addTransaction }) => {
         amounts.totalDebtsNotPayed += parseFloat(amount)
     })
 
-    console.log(amounts.totalDebtsNotPayed);
-
     const cards = [
         {
             id: 1,
