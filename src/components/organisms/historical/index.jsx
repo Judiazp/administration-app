@@ -16,7 +16,7 @@ const TransactionHistory = ({ transactions, deleteRecord, updateRecord }) =>  {
         <div className='transaction-history'>
             <div className="content-filter">
                 <h2 className='title'>Historial de Transacciones</h2>
-                <article className='btns'>
+                <div className='btns'>
                     <button 
                         className='filter-revenues filters' 
                         name="ingreso" 
@@ -39,13 +39,20 @@ const TransactionHistory = ({ transactions, deleteRecord, updateRecord }) =>  {
                         Deudas
                     </button>
                     <button 
+                        className='filter-debts filters' 
+                        name='notPayed' 
+                        onClick={ (e) => handleFilterClick(e, 'notPayed') }
+                    >
+                        Deudas pendientes
+                    </button>
+                    <button 
                         className='filters' 
                         name='everyone' 
                         onClick={ (e) => handleFilterClick(e, 'everyone') }
                     >
                         Todos
                     </button>
-                </article>
+                </div>
             </div>
             <div className="content-tab">
                 <p>Tipo</p>

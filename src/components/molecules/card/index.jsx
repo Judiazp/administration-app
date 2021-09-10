@@ -11,8 +11,7 @@ const Card = ({
     currentBalance,
     iconColor, 
     parameter,
-    amounts,
-}) => {
+    amounts }) => {
 
     const [balance, setBalance] = useState(false)
     
@@ -24,20 +23,20 @@ const Card = ({
 
     return (
         <>
-        <div 
-            className="content-item-balance" 
-            onClick={ () => action()} 
-            title={message}
-        >
-            <p>{ typeTransaction }</p>
-            <h2> 
-                { currentBalance.toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) }
-                <span style={{ color: `${iconColor}` }}> 
-                    <FontAwesomeIcon icon={icon} /> 
-                </span>
-            </h2>
-            
-        </div>
+            <div 
+                className="content-item-balance" 
+                onClick={ () => action()} 
+                title={message}
+            >
+                <p>{ typeTransaction }</p>
+                <h2> 
+                    { currentBalance.toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) }
+                    <span style={{ color: `${iconColor}` }}> 
+                        <FontAwesomeIcon icon={icon} /> 
+                    </span>
+                </h2>
+                
+            </div>
             { balance && <CurrentBalance amounts={amounts} setBalance={setBalance} /> }
         </>
     )
