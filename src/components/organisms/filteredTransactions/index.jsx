@@ -10,9 +10,13 @@ export const FilteredTransactions = ({ filters, transactions, deleteRecord, upda
         if (typeFilter === 'everyone') {
             array = transactions
         } 
-        if (typeFilter === 'notPayed') {
+        if (typeFilter === 'notPayed' || typeFilter === 'paid' ) {
             array = transactions.filter(({stateDebts}) => stateDebts === typeFilter)  
-        } else {
+        } 
+        // if (typeFilter === 'paid') {
+        //     array = transactions.filter(({stateDebts}) => stateDebts === typeFilter)
+        // } 
+        else {
             array = transactions.filter(({operation}) => operation === typeFilter)
         }
 
