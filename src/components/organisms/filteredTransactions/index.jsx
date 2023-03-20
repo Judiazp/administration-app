@@ -1,44 +1,22 @@
 import React from 'react';
 import Transaction from '../transaction';
 import { NoRecords } from '../../atoms/noRecords';
+import getTransactionsByFilter from './_helper';
 
-export const FilteredTransactions = ({ filters, transactions, deleteRecord, updateRecord  }) => {
-    
-    const filterArray = (typeFilter) => {
-
-        let array
-        if (typeFilter === 'everyone') {
-            array = transactions
-        } 
-        if (typeFilter === 'notPayed' || typeFilter === 'paid' ) {
-            array = transactions.filter(({stateDebts}) => stateDebts === typeFilter)  
-        } 
-        // if (typeFilter === 'paid') {
-        //     array = transactions.filter(({stateDebts}) => stateDebts === typeFilter)
-        // } 
-        else {
-            array = transactions.filter(({operation}) => operation === typeFilter)
-        }
-
-        if (filters === typeFilter) {
-            if (array.length === 0) {
-                return <NoRecords/>
-            } else {
-                return array.map(transaction => 
-                    <Transaction
-                        trans = { transaction }
-                        key={transaction.id}
-                        deleteRecord = { deleteRecord }
-                        updateRecord = { updateRecord }
-                    /> 
-                )
-            }
-        }
-    }
-    
+export const FilteredTransactions = ({ filters: typeFilter, transactions, deleteRecord, updateRecord }) => {
+    const transactionList = getTransactionsByFilter(typeFilter, transactions)
     return (
         <div className="content-transaction">
-            { filterArray(filters) }
+            {
+                transactionList.length ? transactionList.map(transaction =>
+                    <Transaction
+                        trans={transaction}
+                        key={transaction.id}
+                        deleteRecord={deleteRecord}
+                        updateRecord={updateRecord}
+                    />
+                ) : <NoRecords />
+            }
         </div>
     )
 }
