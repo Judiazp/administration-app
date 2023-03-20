@@ -1,9 +1,10 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
+import './graphics.css'
 
 export const Graphics = ({ income, expenses, debts, debtsPaid }) => {
     const data = {
-        labels: [ 'Ingresos', 'Gastos', 'Deudas'],
+        labels: ['Ingresos', 'Gastos', 'Deudas'],
         datasets: [
             {
                 label: 'Saldo',
@@ -23,8 +24,12 @@ export const Graphics = ({ income, expenses, debts, debtsPaid }) => {
     }
 
     return (
-        <div style={{ width: '100%', height: '100%', background: '#FFFFFF' }}>
-            <Bar data={ data } options={ option } />
-        </div>
+        <div className="content-graph-form">
+            <div className="graph">
+                <div style={{ width: '100%', height: '100%', background: '#FFFFFF' }}>
+                    <Bar data={data} options={option} />
+                </div>
+            </div>
+        </div >
     )
 }
