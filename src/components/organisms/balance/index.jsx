@@ -1,9 +1,7 @@
 import React from 'react';
 import { Graphics } from '../../molecules/graphics';
-import { faWallet } from '@fortawesome/free-solid-svg-icons';
-import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
-import { faArrowCircleUp } from '@fortawesome/free-solid-svg-icons';
-import { faArrowCircleDown } from '@fortawesome/free-solid-svg-icons';
+import getBalance from '../../../utils/getFullAmount'
+import getBalanceCards from './_helper';
 import Card from '../../molecules/card'
 import './balance.css';
 
@@ -18,95 +16,36 @@ export const Balance = ({ records, addTransaction }) => {
         totalDebtsPaid: 0,
         totalDebtsNotPayed: 0
     }
-   
-    transactions.filter(({ operation }) => operation === 'ingreso' ).forEach(({ amount }) => {
-        amounts.totalRevenues += parseFloat(amount)
-    });
 
-    transactions.filter(({operation}) => operation === 'gasto').forEach(({ amount }) => {
-        amounts.totalExpenses += parseFloat(amount)
-    })
+    const { ingreso, gasto, totalDebts, debtsPaid } = getBalance(transactions)
 
-    transactions.filter(({operation}) => operation === 'deuda').forEach(({ amount }) => {
-        amounts.totalDebts += parseFloat(amount)
-    })
-
-    transactions.filter(({stateDebts}) => stateDebts === 'paid').forEach(({ amount }) => {
-        amounts.totalDebtsPaid += parseFloat(amount)
-    })
-
-    transactions.filter(({stateDebts}) => stateDebts === 'notPayed').forEach(({ amount }) => {
-        amounts.totalDebtsNotPayed += parseFloat(amount)
-    })
-
-    const cards = [
-        {
-            id: 1,
-            typeTransaction: "Saldo actual",
-            icon: faWallet,
-            message: "Ver saldo",
-            iconColor: "#2196F3", 
-            parameter: 'saldo',
-            currentBalance: amounts.totalRevenues - amounts.totalExpenses - amounts.totalDebtsPaid
-        },
-        {
-            id: 2,
-            typeTransaction: "Ingresos",
-            icon:  faArrowCircleUp,
-            message: "Agrega un ingreso",
-            iconColor: "rgb(93,192,97)",
-            parameter: "ingreso",
-            currentBalance: amounts.totalRevenues
-        },
-        {
-            id: 3,
-            typeTransaction: "Gastos",
-            icon:  faArrowCircleDown ,
-            message: "Agrega un gasto",
-            iconColor: "rgb(229,61,47)",
-            parameter: "gasto",
-            currentBalance: amounts.totalExpenses + amounts.totalDebtsPaid
-        },
-        {
-            id: 4,
-            typeTransaction: "Deudas",
-            icon:  faCreditCard,
-            message: "Agrega una deuda",
-            iconColor: "#00796B",
-            parameter: "deuda",
-            currentBalance: amounts.totalDebts - amounts.totalDebtsPaid
-        },
-    ]
+    const cards = getBalanceCards({ ingreso, gasto, totalDebts, debtsPaid })
 
     return (
         <>
             <div className="content-balance">
-                { cards.map(item => {
-                    return ( 
-                        <Card  
+                {cards.map(item => {
+                    return (
+                        <Card
                             key={item.id}
-                            addTransaction={ addTransaction } 
-                            typeTransaction={ item.typeTransaction }
-                            icon={ item.icon }
+                            addTransaction={addTransaction}
+                            typeTransaction={item.typeTransaction}
+                            icon={item.icon}
                             currentBalance={item.currentBalance}
-                            amounts={ amounts }
-                            message={ item.message}
+                            amounts={amounts}
+                            message={item.message}
                             iconColor={item.iconColor}
                             parameter={item.parameter}
                         />
                     )
                 })}
             </div>
-            <div className = "content-graph-form">
-                <div className="graph">
-                    <Graphics 
-                        income={ amounts.totalRevenues } 
-                        expenses={ amounts.totalExpenses } 
-                        debts={ amounts.totalDebts } 
-                        debtsPaid={ amounts.totalDebtsPaid } 
-                    />
-                </div>
-            </div>
+            <Graphics
+                income={amounts.totalRevenues}
+                expenses={amounts.totalExpenses}
+                debts={amounts.totalDebts}
+                debtsPaid={amounts.totalDebtsPaid}
+            />
         </>
     )
 }

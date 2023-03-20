@@ -1,0 +1,17 @@
+.content-graph-form   {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    justify-content: center;
+    height: 40%;
+}
+
+.graph {
+    background-color: #FFFFFF;
+    width: 100%;
+    padding: 20px;
+    height: 40vh;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
