@@ -41,10 +41,10 @@ export const Balance = ({ records, addTransaction }) => {
                 })}
             </div>
             <Graphics
-                income={amounts.totalRevenues}
-                expenses={amounts.totalExpenses}
-                debts={amounts.totalDebts}
-                debtsPaid={amounts.totalDebtsPaid}
+                income={ingreso}
+                expenses={gasto}
+                debts={totalDebts}
+                debtsPaid={debtsPaid}
             />
         </>
     )
