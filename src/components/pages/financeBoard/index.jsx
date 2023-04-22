@@ -7,13 +7,18 @@ import { Balance } from '../../organisms/balance';
 import { Footer } from '../../molecules/footer';
 
 import './financeBoard.css'
+import useCRUD from '../../../hooks/useCRUD';
 
 const FinanceBoard = () => {
-
+    // TODO: Corregir re render
     const initialValueRecords = JSON.parse(localStorage.getItem('transactions')) || { transactions: [] }
     const [records, setRecords] = useState(initialValueRecords)
     const [modal, setModal] = useState(false);
     const [typeTransaction, setTypeTransaction] = useState()
+
+    const { getContent } = useCRUD()
+
+    getContent('gasto').then( resp => console.log(resp))
 
     useEffect(() => {
         localStorage.setItem('transactions', JSON.stringify(records))
